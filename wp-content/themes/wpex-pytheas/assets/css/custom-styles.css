@@ -1,0 +1,108 @@
+/* Wpex pytheas Custom Styles */
+
+body{
+    background: #EDFBFF;
+    font: 12px/1.8 Arial;
+}
+
+#wrap{
+    margin: 0 auto;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* HEADER */
+#masthead{
+    padding: 6px 20px;
+}
+
+.masthead-right-content{
+    color: #1F3765;
+    font-weight: bold;
+    font-size: 16px;
+}
+.masthead-right{
+    padding-top: 10px;
+}
+
+.float_right{
+    float: right;
+}
+
+.float_left{
+    float: left;
+}
+
+.login_link a{
+    padding-right: 18px;
+    color: #6C6C6C;
+    font-size: 11px;
+}
+
+#social{
+    float: right;
+    width: 100%;
+    text-align: right;
+    position: inherit;
+    right: 0;
+    top: 0;
+    margin-top: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.masthead-search{
+    float: left;
+}
+
+/* MAIN */
+
+#main{
+    padding: 20px;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+}
+
+/* FOOTER */
+
+#footer{
+    background: transparent;
+    border-top: none;
+    padding: 24px 0 47px 0;
+}
+
+#footer-bottom{
+    background: transparent;
+    border-top: 1px solid #C0C0C0;
+    padding: 14px 20px 10px 20px;
+}
+
+#footer-bottom img{
+    width: 221px;
+}
+
+#copyright{
+    text-align: right;
+    font-size: 12px;
+    color: #606060;
+}
+
+#footer-menu ul{
+    float: none;
+    margin:0 auto;
+}
+
+#footer-menu ul a{
+    color: #79777D;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+#footer-menu li{
+    margin-left: 0;
+    width: 14.2%;
+    text-align: center;
+}
