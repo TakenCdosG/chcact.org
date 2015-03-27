@@ -1,0 +1,134 @@
+[21-Jul-2013 20:53:01] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/canonical.php on line 506
+[21-Jul-2013 20:53:02] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-scripts.php on line 19
+[21-Jul-2013 20:53:03] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-styles.php on line 19
+[21-Jul-2013 20:53:04] PHP Warning:  require_once(ABSPATHWPINC/class-simplepie.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[21-Jul-2013 20:53:04] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class-simplepie.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[21-Jul-2013 20:53:05] PHP Fatal error:  Class 'Walker' not found in /home6/chcactor/public_html/wp-includes/comment-template.php on line 1217
+[21-Jul-2013 20:53:10] PHP Fatal error:  Class 'WP_Widget' not found in /home6/chcactor/public_html/wp-includes/default-widgets.php on line 14
+[21-Jul-2013 20:53:11] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/default-filters.php on line 17
+[21-Jul-2013 20:53:14] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom.php on line 8
+[21-Jul-2013 20:53:15] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom-comments.php on line 8
+[21-Jul-2013 20:53:16] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rdf.php on line 8
+[21-Jul-2013 20:53:17] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss.php on line 8
+[21-Jul-2013 20:53:18] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2.php on line 8
+[21-Jul-2013 20:53:19] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2-comments.php on line 8
+[21-Jul-2013 20:53:20] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/general-template.php on line 1282
+[21-Jul-2013 20:53:21] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/kses.php on line 1392
+[21-Jul-2013 20:53:22] PHP Fatal error:  Call to undefined function  add_shortcode() in /home6/chcactor/public_html/wp-includes/media.php on line 609
+[21-Jul-2013 20:53:24] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/post.php on line 165
+[21-Jul-2013 20:53:25] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/registration-functions.php on line 7
+[21-Jul-2013 20:53:26] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss.php on line 18
+[21-Jul-2013 20:53:28] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss-functions.php on line 8
+[21-Jul-2013 20:53:28] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class.wp-dependencies.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/script-loader.php on line 25
+[21-Jul-2013 20:53:30] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/shortcodes.php on line 335
+[21-Jul-2013 20:53:31] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/taxonomy.php on line 121
+[21-Jul-2013 20:53:32] PHP Fatal error:  Call to undefined function  is_robots() in /home6/chcactor/public_html/wp-includes/template-loader.php on line 14
+[21-Jul-2013 20:53:33] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/theme.php on line 582
+[21-Jul-2013 20:53:34] PHP Fatal error:  Call to undefined function  is_main_site() in /home6/chcactor/public_html/wp-includes/update.php on line 431
+[21-Jul-2013 20:53:36] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/user.php on line 71
+[21-Jul-2013 20:53:38] PHP Fatal error:  Call to undefined function  is_admin() in /home6/chcactor/public_html/wp-includes/vars.php on line 20
+[23-Jul-2013 14:31:20] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/canonical.php on line 506
+[23-Jul-2013 14:31:21] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-scripts.php on line 19
+[23-Jul-2013 14:31:22] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-styles.php on line 19
+[23-Jul-2013 14:31:23] PHP Warning:  require_once(ABSPATHWPINC/class-simplepie.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[23-Jul-2013 14:31:23] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class-simplepie.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[23-Jul-2013 14:31:23] PHP Fatal error:  Class 'Walker' not found in /home6/chcactor/public_html/wp-includes/comment-template.php on line 1217
+[23-Jul-2013 14:31:25] PHP Fatal error:  Class 'WP_Widget' not found in /home6/chcactor/public_html/wp-includes/default-widgets.php on line 14
+[23-Jul-2013 14:31:25] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/default-filters.php on line 17
+[23-Jul-2013 14:31:27] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom.php on line 8
+[23-Jul-2013 14:31:28] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom-comments.php on line 8
+[23-Jul-2013 14:31:29] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rdf.php on line 8
+[23-Jul-2013 14:31:30] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss.php on line 8
+[23-Jul-2013 14:31:31] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2.php on line 8
+[23-Jul-2013 14:31:31] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2-comments.php on line 8
+[23-Jul-2013 14:31:32] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/general-template.php on line 1282
+[23-Jul-2013 14:31:33] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/kses.php on line 1392
+[23-Jul-2013 14:31:34] PHP Fatal error:  Call to undefined function  add_shortcode() in /home6/chcactor/public_html/wp-includes/media.php on line 609
+[23-Jul-2013 14:31:34] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/post.php on line 165
+[23-Jul-2013 14:31:35] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/registration-functions.php on line 7
+[23-Jul-2013 14:31:35] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss.php on line 18
+[23-Jul-2013 14:31:36] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss-functions.php on line 8
+[23-Jul-2013 14:31:37] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class.wp-dependencies.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/script-loader.php on line 25
+[23-Jul-2013 14:31:37] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/shortcodes.php on line 335
+[23-Jul-2013 14:31:38] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/taxonomy.php on line 121
+[23-Jul-2013 14:31:38] PHP Fatal error:  Call to undefined function  is_robots() in /home6/chcactor/public_html/wp-includes/template-loader.php on line 14
+[23-Jul-2013 14:31:39] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/theme.php on line 582
+[23-Jul-2013 14:31:40] PHP Fatal error:  Call to undefined function  is_main_site() in /home6/chcactor/public_html/wp-includes/update.php on line 431
+[23-Jul-2013 14:31:40] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/user.php on line 71
+[23-Jul-2013 14:31:42] PHP Fatal error:  Call to undefined function  is_admin() in /home6/chcactor/public_html/wp-includes/vars.php on line 20
+[23-Jul-2013 16:22:16] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/canonical.php on line 506
+[23-Jul-2013 16:22:18] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-scripts.php on line 19
+[23-Jul-2013 16:22:19] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-styles.php on line 19
+[23-Jul-2013 16:22:22] PHP Warning:  require_once(ABSPATHWPINC/class-simplepie.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[23-Jul-2013 16:22:22] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class-simplepie.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[23-Jul-2013 16:22:23] PHP Fatal error:  Class 'Walker' not found in /home6/chcactor/public_html/wp-includes/comment-template.php on line 1217
+[23-Jul-2013 16:22:25] PHP Fatal error:  Class 'WP_Widget' not found in /home6/chcactor/public_html/wp-includes/default-widgets.php on line 14
+[23-Jul-2013 16:22:27] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/default-filters.php on line 17
+[23-Jul-2013 16:22:32] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom.php on line 8
+[23-Jul-2013 16:22:33] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom-comments.php on line 8
+[23-Jul-2013 16:22:35] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rdf.php on line 8
+[23-Jul-2013 16:22:37] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss.php on line 8
+[23-Jul-2013 16:22:38] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2.php on line 8
+[23-Jul-2013 16:22:41] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2-comments.php on line 8
+[23-Jul-2013 16:22:42] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/general-template.php on line 1282
+[23-Jul-2013 16:22:44] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/kses.php on line 1392
+[23-Jul-2013 16:22:45] PHP Fatal error:  Call to undefined function  add_shortcode() in /home6/chcactor/public_html/wp-includes/media.php on line 609
+[23-Jul-2013 16:22:47] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/post.php on line 165
+[23-Jul-2013 16:22:48] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/registration-functions.php on line 7
+[23-Jul-2013 16:22:49] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss.php on line 18
+[23-Jul-2013 16:22:51] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss-functions.php on line 8
+[23-Jul-2013 16:22:52] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class.wp-dependencies.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/script-loader.php on line 25
+[23-Jul-2013 16:22:53] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/shortcodes.php on line 335
+[23-Jul-2013 16:22:54] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/taxonomy.php on line 121
+[23-Jul-2013 16:22:55] PHP Fatal error:  Call to undefined function  is_robots() in /home6/chcactor/public_html/wp-includes/template-loader.php on line 14
+[23-Jul-2013 16:22:55] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/theme.php on line 582
+[23-Jul-2013 16:22:56] PHP Fatal error:  Call to undefined function  is_main_site() in /home6/chcactor/public_html/wp-includes/update.php on line 431
+[23-Jul-2013 16:22:57] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/user.php on line 71
+[23-Jul-2013 16:22:58] PHP Fatal error:  Call to undefined function  is_admin() in /home6/chcactor/public_html/wp-includes/vars.php on line 20
+[29-Jul-2013 17:43:04] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/canonical.php on line 506
+[29-Jul-2013 17:43:07] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-scripts.php on line 19
+[29-Jul-2013 17:43:09] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-styles.php on line 19
+[29-Jul-2013 17:43:09] PHP Warning:  require_once(ABSPATHWPINC/class-simplepie.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[29-Jul-2013 17:43:09] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class-simplepie.php' (include_path='.:/usr/lib64/php:/usr/lib/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[29-Jul-2013 17:43:10] PHP Fatal error:  Class 'Walker' not found in /home6/chcactor/public_html/wp-includes/comment-template.php on line 1217
+[29-Jul-2013 17:43:10] PHP Fatal error:  Class 'WP_Widget' not found in /home6/chcactor/public_html/wp-includes/default-widgets.php on line 14
+[29-Jul-2013 17:43:11] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/default-filters.php on line 17
+[29-Jul-2013 17:43:30] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom.php on line 8
+[29-Jul-2013 17:43:32] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom-comments.php on line 8
+[29-Jul-2013 17:43:36] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rdf.php on line 8
+[29-Jul-2013 17:43:40] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss.php on line 8
+[29-Jul-2013 17:43:42] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2.php on line 8
+[29-Jul-2013 17:43:46] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2-comments.php on line 8
+[29-Jul-2013 17:43:50] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/general-template.php on line 1282
+[29-Jul-2013 17:43:52] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/kses.php on line 1392
+[29-Jul-2013 17:43:55] PHP Fatal error:  Call to undefined function  add_shortcode() in /home6/chcactor/public_html/wp-includes/media.php on line 609
+[29-Jul-2013 17:44:00] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/post.php on line 165
+[12-Nov-2013 22:22:43] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/canonical.php on line 506
+[12-Nov-2013 22:22:45] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-scripts.php on line 19
+[12-Nov-2013 22:22:47] PHP Fatal error:  Class 'WP_Dependencies' not found in /home6/chcactor/public_html/wp-includes/class.wp-styles.php on line 19
+[12-Nov-2013 22:22:50] PHP Warning:  require_once(ABSPATHWPINC/class-simplepie.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[12-Nov-2013 22:22:50] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class-simplepie.php' (include_path='.:/usr/lib64/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/class-feed.php on line 4
+[12-Nov-2013 22:22:53] PHP Fatal error:  Class 'Walker' not found in /home6/chcactor/public_html/wp-includes/comment-template.php on line 1217
+[12-Nov-2013 22:22:54] PHP Fatal error:  Class 'WP_Widget' not found in /home6/chcactor/public_html/wp-includes/default-widgets.php on line 14
+[12-Nov-2013 22:22:56] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/default-filters.php on line 17
+[12-Nov-2013 22:23:01] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom.php on line 8
+[12-Nov-2013 22:23:03] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-atom-comments.php on line 8
+[12-Nov-2013 22:23:05] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rdf.php on line 8
+[12-Nov-2013 22:23:06] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss.php on line 8
+[12-Nov-2013 22:23:08] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2.php on line 8
+[12-Nov-2013 22:23:09] PHP Fatal error:  Call to undefined function  feed_content_type() in /home6/chcactor/public_html/wp-includes/feed-rss2-comments.php on line 8
+[12-Nov-2013 22:23:11] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/general-template.php on line 1315
+[12-Nov-2013 22:23:12] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/kses.php on line 1392
+[12-Nov-2013 22:23:13] PHP Fatal error:  Call to undefined function  add_shortcode() in /home6/chcactor/public_html/wp-includes/media.php on line 610
+[12-Nov-2013 22:23:15] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/post.php on line 165
+[12-Nov-2013 22:23:16] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/registration-functions.php on line 7
+[12-Nov-2013 22:23:17] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss.php on line 18
+[12-Nov-2013 22:23:17] PHP Fatal error:  Call to undefined function  _deprecated_file() in /home6/chcactor/public_html/wp-includes/rss-functions.php on line 8
+[12-Nov-2013 22:23:18] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'ABSPATHWPINC/class.wp-dependencies.php' (include_path='.:/usr/lib64/php:/usr/share/pear') in /home6/chcactor/public_html/wp-includes/script-loader.php on line 25
+[12-Nov-2013 22:23:19] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/shortcodes.php on line 377
+[12-Nov-2013 22:23:19] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/taxonomy.php on line 121
+[12-Nov-2013 22:23:21] PHP Fatal error:  Call to undefined function  is_robots() in /home6/chcactor/public_html/wp-includes/template-loader.php on line 14
+[12-Nov-2013 22:23:21] PHP Fatal error:  Call to undefined function  add_action() in /home6/chcactor/public_html/wp-includes/theme.php on line 582
+[12-Nov-2013 22:23:22] PHP Fatal error:  Call to undefined function  is_main_site() in /home6/chcactor/public_html/wp-includes/update.php on line 431
+[12-Nov-2013 22:23:23] PHP Fatal error:  Call to undefined function  add_filter() in /home6/chcactor/public_html/wp-includes/user.php on line 71
+[12-Nov-2013 22:23:24] PHP Fatal error:  Call to undefined function  is_admin() in /home6/chcactor/public_html/wp-includes/vars.php on line 20
