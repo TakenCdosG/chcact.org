@@ -1,12 +1,12 @@
 <?php
 
 // Refresh the schedules from the database to make sure we have the latest changes
-HMBKP_Schedules::get_instance()->refresh_schedules();
+HM\BackUpWordPress\Schedules::get_instance()->refresh_schedules();
 
-$schedules = HMBKP_Schedules::get_instance()->get_schedules();
+$schedules = HM\BackUpWordPress\Schedules::get_instance()->get_schedules();
 
 if ( ! empty( $_GET['hmbkp_schedule_id'] ) ) {
-	$current_schedule = new HMBKP_Scheduled_Backup( sanitize_text_field( $_GET['hmbkp_schedule_id'] ) );
+	$current_schedule = new HM\BackUpWordPress\Scheduled_Backup( sanitize_text_field( $_GET['hmbkp_schedule_id'] ) );
 } else {
 	$current_schedule = reset( $schedules );
 } ?>
@@ -19,7 +19,7 @@ if ( ! empty( $_GET['hmbkp_schedule_id'] ) ) {
 
 	<?php endforeach; ?>
 
-	<a class="nav-tab<?php if ( ! HMBKP_Schedules::get_instance()->get_schedule( $current_schedule->get_id() ) ) { ?> nav-tab-active<?php } ?>" href="<?php echo esc_url( add_query_arg( array( 'hmbkp_add_schedule' => '1', 'action' => 'hmbkp_edit_schedule', 'hmbkp_schedule_id' => time(), 'hmbkp_panel' => 'hmbkp_edit_schedule_settings' ), HMBKP_ADMIN_URL ) ); ?>"> + <?php _e( 'add schedule', 'backupwordpress' ); ?></a>
+	<a class="nav-tab<?php if ( ! HM\BackUpWordPress\Schedules::get_instance()->get_schedule( $current_schedule->get_id() ) ) { ?> nav-tab-active<?php } ?>" href="<?php echo esc_url( add_query_arg( array( 'hmbkp_add_schedule' => '1', 'action' => 'hmbkp_edit_schedule', 'hmbkp_schedule_id' => time(), 'hmbkp_panel' => 'hmbkp_edit_schedule_settings' ), HMBKP_ADMIN_URL ) ); ?>"> + <?php _e( 'add schedule', 'backupwordpress' ); ?></a>
 
 	<?php if ( get_option( 'hmbkp_enable_support' ) ) { ?>
 
@@ -29,7 +29,7 @@ if ( ! empty( $_GET['hmbkp_schedule_id'] ) ) {
 
 		add_thickbox(); ?>
 
-		<a id="intercom-info" class="thickbox add-new-h2" href="<?php echo wp_nonce_url( add_query_arg( array( 'action' => 'load_enable_support', 'width' => '600', 'height' => '420' ), is_multisite() ? admin_url( 'admin-ajax.php' ) : network_admin_url( 'admin-ajax.php' ) ), 'hmbkp_nonce' ); ?>"><span class="dashicons dashicons-admin-users"></span>&nbsp;<?php _e( 'Enable Support', 'backupwordpress' ); ?></a>
+		<a id="intercom-info" class="thickbox add-new-h2" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'load_enable_support', 'width' => '600', 'height' => '420' ), self_admin_url( 'admin-ajax.php' ) ), 'hmbkp_nonce' ) ); ?>"><span class="dashicons dashicons-admin-users"></span>&nbsp;<?php _e( 'Enable Support', 'backupwordpress' ); ?></a>
 
 	<?php } ?>
 

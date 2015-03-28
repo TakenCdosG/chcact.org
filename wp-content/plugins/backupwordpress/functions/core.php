@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Returns the backup path
+ *
+ * @see Path
+ * @todo remove the need for this
+ */
+function hmbkp_path() {
+	return HM\BackUpWordPress\Path::get_instance()->get_path();
+}
+
+/**
  * Handles anything that needs to be
  * done when the plugin is updated
  */
@@ -53,7 +63,7 @@ function hmbkp_update() {
 		/**
 		 * Setup a backwards compatible schedule
 		 */
-		$legacy_schedule = new HMBKP_Scheduled_Backup( 'backup' );
+		$legacy_schedule = new HM\BackUpWordPress\Scheduled_Backup( 'backup' );
 
 		// Backup type
 		if ( ( defined( 'HMBKP_FILES_ONLY' ) && HMBKP_FILES_ONLY ) || get_option( 'hmbkp_files_only' ) ) {
@@ -105,7 +115,7 @@ function hmbkp_update() {
 		}
 
 		// Set the archive filename to what it used to be
-		$legacy_schedule->set_archive_filename( implode( '-', array( get_bloginfo( 'name' ), 'backup', date( 'Y-m-d-H-i-s', current_time( 'timestamp' ) ) ) ) . '.zip' );
+		$legacy_schedule->backup->set_archive_filename( implode( '-', array( get_bloginfo( 'name' ), 'backup', current_time( 'Y-m-d-H-i-s' ) ) ) . '.zip' );
 
 		$legacy_schedule->save();
 
@@ -119,7 +129,7 @@ function hmbkp_update() {
 	// Update from 2.2.4
 	if ( get_option( 'hmbkp_plugin_version' ) && version_compare( '2.2.5', get_option( 'hmbkp_plugin_version' ), '>' ) ) {
 
-		$schedules = HMBKP_Schedules::get_instance();
+		$schedules = HM\BackUpWordPress\Schedules::get_instance();
 
 		// Loop through all schedules and re-set the reccurrence to include hmbkp_
 		foreach ( $schedules->get_schedules() as $schedule ) {
@@ -153,18 +163,126 @@ function hmbkp_update() {
 
 	}
 
+	// update to 3.1.4
+	if ( get_option( 'hmbkp_plugin_version' ) && version_compare( '3.1.4', get_option( 'hmbkp_plugin_version' ), '>' ) ) {
+
+		$old_option_names = array(
+			'HM\BackUpWordPressDropbox\Dropbox_Service'    => 'dropbox',
+			'HMBKP_DX_Backup_Service'                      => 'dropbox',
+			'HM\BackUpWordPressFTP\FTP_Backup_Service'     => 'ftp',
+			'HMBKP_FTP_Backup_Service'                     => 'ftp',
+			'HM\BackUpWordPressGDrive\Google_Drive_BackUp' => 'google-drive',
+			'HMBKP_GDV_Backup_Service'                     => 'google-drive',
+			'HM\BackUpWordPressRackspace\RackSpace_BackUp' => 'rackspace-cloud',
+			'HMBKP_RSC_Backup_Service'                     => 'rackspace-cloud',
+			'HM\BackUpWordPressS3\S3_Backup'               => 's3',
+			'HMBKP_S3_Backup_Service'                      => 's3',
+			'HM\BackUpWordPressWinAzure\WinAzure_Backup'   => 'azure',
+			'HMBKP_WAZ_Backup_Service'                     => 'azure',
+			'HM\BackUpWordPress\Email_Service'             => 'email',
+		);
+
+		global $wpdb;
+
+		// Get all schedule options with a SELECT query and delete them.
+		$schedules = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE %s", 'hmbkp_schedule_%' ) );
+
+		if ( 0 < count( $schedules ) ) {
+
+			// Access each schedules settings to see if the addon settings names need to be be updated to the new naming convention which uses the service slug generated from the $name property.
+			foreach ( $schedules as $schedule_id ) {
+
+				// Load the settings for this schedule into an array
+				// so we can loop through the different service settings
+				$schedule_settings = get_option( $schedule_id );
+
+				// Iterate over each schedule setting for this schedule and check its name against our array.
+				foreach ( $schedule_settings as $key => $val ) {
+					// Find the current element key in our control array and get its value. Set a new element in the settings array with the found value as its key. Aka rename the element key
+					if ( array_key_exists( $key, $old_option_names ) ) {
+
+						// move the value to our new key
+						$schedule_settings[ $old_option_names[ $key ] ] = $schedule_settings[ $key ];
+
+						unset( $schedule_settings[ $key ] );
+
+					}
+				}
+
+				// Save back to the DB
+				update_option( $schedule_id, $schedule_settings );
+			}
+		}
+
+
+	}
+
+	// Update to 3.1.5
+	if ( get_option( 'hmbkp_plugin_version' ) && version_compare( '3.1.5', get_option( 'hmbkp_plugin_version' ), '>' ) ) {
+
+		// Delete all transients
+		$transients = array(
+			'hmbkp_plugin_data',
+			'hmbkp_directory_filesizes',
+			'hmbkp_directory_filesizes_running',
+			'hmbkp_wp_cron_test_beacon',
+			'hm_backdrop',
+		);
+
+		array_map( 'delete_transient', $transients );
+
+		// Clear duplicate schedules on multisite
+		if ( is_multisite() ) {
+
+			// get current blogs from DB
+			$blogs = wp_get_sites();
+
+			foreach ( $blogs as $blog ) {
+
+				switch_to_blog( get_current_blog_id() );
+
+				if ( is_main_site( get_current_blog_id() ) ) {
+					continue;
+				}
+
+				global $wpdb;
+
+				// Get the schedule options
+				$schedules = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE %s", 'hmbkp_schedule_%' ) );
+
+				// clear schedules
+				foreach ( array_map( function ( $item ) {
+					return ltrim( $item, 'hmbkp_schedule_' );
+				}, $schedules ) as $item ) {
+					wp_clear_scheduled_hook( 'hmbkp_schedule_hook', array( 'id' => $item ) );
+				}
+
+				// delete options
+				array_map( 'delete_option', $schedules );
+
+				array_map( 'delete_option', array( 'hmbkp_enable_support', 'hmbkp_plugin_version', 'hmbkp_path', 'hmbkp_default_path', 'hmbkp_upsell' ) );
+
+				// Delete all transients
+				array_map( 'delete_transient', array( 'hmbkp_plugin_data', 'hmbkp_directory_filesizes', 'hmbkp_directory_filesize_running', 'timeout_hmbkp_wp_cron_test_beacon', 'hmbkp_wp_cron_test_beacon' ) );
+
+			}
+			
+			restore_current_blog();
+		}
+	}
+
 	// Every update
-	if ( get_option( 'hmbkp_plugin_version' ) && version_compare( BackUpWordPress_Plugin::PLUGIN_VERSION, get_option( 'hmbkp_plugin_version' ), '>' ) ) {
+	if ( get_option( 'hmbkp_plugin_version' ) && version_compare( HM\BackUpWordPress\Plugin::PLUGIN_VERSION, get_option( 'hmbkp_plugin_version' ), '>' ) ) {
 
-		BackUpWordPress_Setup::deactivate();
+		HM\BackUpWordPress\Setup::deactivate();
 
-		HMBKP_Path::get_instance()->protect_path( 'reset' );
+		HM\BackUpWordPress\Path::get_instance()->protect_path( 'reset' );
 
 	}
 
 	// Update the stored version
-	if ( get_option( 'hmbkp_plugin_version' ) !== BackUpWordPress_Plugin::PLUGIN_VERSION ) {
-		update_option( 'hmbkp_plugin_version', BackUpWordPress_Plugin::PLUGIN_VERSION );
+	if ( get_option( 'hmbkp_plugin_version' ) !== HM\BackUpWordPress\Plugin::PLUGIN_VERSION ) {
+		update_option( 'hmbkp_plugin_version', HM\BackUpWordPress\Plugin::PLUGIN_VERSION );
 	}
 
 }
@@ -174,16 +292,17 @@ function hmbkp_update() {
  */
 function hmbkp_setup_default_schedules() {
 
-	$schedules = HMBKP_Schedules::get_instance();
+	$schedules = HM\BackUpWordPress\Schedules::get_instance();
 
-	if ( $schedules->get_schedules() )
+	if ( $schedules->get_schedules() ) {
 		return;
+	}
 
 	/**
 	 * Schedule a database backup daily and store backups
 	 * for the last 2 weeks
 	 */
-	$database_daily = new HMBKP_Scheduled_Backup( (string) time() );
+	$database_daily = new HM\BackUpWordPress\Scheduled_Backup( (string) time() );
 	$database_daily->set_type( 'database' );
 	$database_daily->set_schedule_start_time( hmbkp_determine_start_time( 'hmbkp_daily', array( 'hours' => '23', 'minutes' => '0' ) ) );
 	$database_daily->set_reoccurrence( 'hmbkp_daily' );
@@ -194,7 +313,7 @@ function hmbkp_setup_default_schedules() {
 	 * Schedule a complete backup to run weekly and store backups for
 	 * the last 3 months
 	 */
-	$complete_weekly = new HMBKP_Scheduled_Backup( (string) ( time() + 1 ) );
+	$complete_weekly = new HM\BackUpWordPress\Scheduled_Backup( (string) ( time() + 1 ) );
 	$complete_weekly->set_type( 'complete' );
 	$complete_weekly->set_schedule_start_time( hmbkp_determine_start_time( 'hmbkp_weekly', array( 'day_of_week' => 'sunday', 'hours' => '3', 'minutes' => '0' ) ) );
 	$complete_weekly->set_reoccurrence( 'hmbkp_weekly' );
@@ -203,11 +322,9 @@ function hmbkp_setup_default_schedules() {
 
 	$schedules->refresh_schedules();
 
-	function hmbkp_default_schedules_setup_warning() {
+	add_action( 'admin_notices', function() {
 		echo '<div id="hmbkp-warning" class="updated fade"><p><strong>' . __( 'BackUpWordPress has setup your default schedules.', 'backupwordpress' ) . '</strong> ' . __( 'By default BackUpWordPress performs a daily backup of your database and a weekly backup of your database &amp; files. You can modify these schedules.', 'backupwordpress' ) . '</p></div>';
-	}
-
-	add_action( 'admin_notices', 'hmbkp_default_schedules_setup_warning' );
+	} );
 
 }
 
@@ -243,7 +360,7 @@ add_filter( 'cron_schedules', 'hmbkp_cron_schedules' );
  */
 function hmbkp_rmdirtree( $dir ) {
 
-	if ( false !== strpos( HM_Backup::get_home_path(), $dir ) )
+	if ( false !== strpos( HM\BackUpWordPress\Backup::get_home_path(), $dir ) )
 		return new WP_Error( 'hmbkp_invalid_action_error', sprintf( __( 'You can only delete directories inside your WordPress installation', 'backupwordpress' ) ) );
 
 	if ( is_file( $dir ) )
@@ -281,7 +398,7 @@ function hmbkp_possible() {
 		return false;
 	}
 
-	$test_backup = new HMBKP_Scheduled_Backup( 'test_backup' );
+	$test_backup = new HM\BackUpWordPress\Backup();
 
 	if ( ! is_readable( $test_backup->get_root() ) ) {
 		return false;
@@ -311,7 +428,7 @@ function hmbkp_get_max_attachment_size() {
 function hmbkp_is_path_accessible( $dir ) {
 
 	// Path is inaccessible
-	if ( strpos( $dir, HM_Backup::get_home_path() ) === false ) {
+	if ( strpos( $dir, HM\BackUpWordPress\Backup::get_home_path() ) === false ) {
 		return false;
 	}
 
@@ -374,9 +491,7 @@ function hmbkp_determine_start_time( $type, $times = array() ) {
 
 	$args = wp_parse_args( $times, $default_times );
 
-	$schedule_start = '';
-
-	$intervals = HMBKP_Scheduled_Backup::get_cron_schedules();
+	$intervals = HM\BackUpWordPress\Scheduled_Backup::get_cron_schedules();
 
 	// Allow the hours and minutes to be overwritten by a constant
 	if ( defined( 'HMBKP_SCHEDULE_TIME' ) && HMBKP_SCHEDULE_TIME ) {
@@ -411,19 +526,20 @@ function hmbkp_determine_start_time( $type, $times = array() ) {
 			$schedule_start = date( 'F', $args['now'] ) . ' ' . $args['day_of_month'] . ' ' . $hm;
 
 			// If we've already gone past that day this month then we'll need to start next month
-			if ( strtotime( $schedule_start, $args['now'] ) <= $args['now'] )
+			if ( strtotime( $schedule_start, $args['now'] ) <= $args['now'] ) {
 				$schedule_start = date( 'F', strtotime( '+ 1 month', $args['now'] ) )  . ' ' . $args['day_of_month'] . ' ' . $hm;
+			}
 
 			// If that's still in the past then we'll need to jump to next year
-			if ( strtotime( $schedule_start, $args['now'] ) <= $args['now'] )
+			if ( strtotime( $schedule_start, $args['now'] ) <= $args['now'] ) {
 				$schedule_start = date( 'F', strtotime( '+ 1 month', $args['now'] ) )  . ' ' . $args['day_of_month'] . ' ' . date( 'Y', strtotime( '+ 1 year', $args['now'] ) ) . ' ' . $hm;
+			}
 
 			break;
+
 		default :
 
 			return 0;
-
-			break;
 
 	}
 
