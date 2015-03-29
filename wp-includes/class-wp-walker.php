@@ -202,6 +202,7 @@ class Walker {
 		call_user_func_array(array($this, 'start_el'), $cb_args);
 
 		// descend only when the depth is right and there are childrens for this element
+
 		if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
 
 			foreach( $children_elements[ $id ] as $child ){

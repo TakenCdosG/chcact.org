@@ -28,9 +28,9 @@ class WPEX_Dropdown_Walker_Nav_Menu extends Walker_Nav_Menu {
 }
 
 class WPEX_Walker_Nav_Menu_footer extends Walker_Nav_Menu {
-    function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
+    function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
        if($element->menu_order !=1){
-          d($children_elements);
+           $children_elements = NULL;
            Walker_Nav_Menu::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
        }
     }
