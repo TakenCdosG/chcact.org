@@ -55,6 +55,34 @@ body{
 .masthead-search{
     float: left;
 }
+/* MENU HEADER */
+
+#navbar{
+    min-height: 44px;
+    background: url("../images/bg_navbar.png") repeat-x;
+}
+.nav-menu{
+    border-right: none;
+}
+
+.nav-menu > li > a:hover,
+.nav-menu > .current-menu-item > a,
+.navigation .current-menu-parent > a,
+.navigation .current-menu-parent > a:hover,
+.nav-menu > .current-menu-item > a:hover{
+    background: url("../images/bg_navbar_over.png") repeat-x;
+}
+.nav-menu > li > a{
+    height: 44px;
+    font-size: 13px;
+    font-weight: normal;
+    border-right: 1px solid #2D3A5E;
+    border-left: 1px solid #3E4C74;
+}
+
+.nav-menu li.dropdown a,.nav-menu > li > a{
+    padding: 0 8px;
+}
 
 /* MAIN */
 
@@ -105,4 +133,13 @@ body{
     margin-left: 0;
     width: 14.2%;
     text-align: center;
+}
+
+.masthead-search{
+    display: none;
+}
+@media only screen and (min-width: 1115px){
+    .masthead-search{
+        display: block;
+    }
 }

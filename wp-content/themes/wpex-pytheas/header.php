@@ -57,7 +57,7 @@
 		
 	<div id="main" class="site-main fitvids clr row">
     <div id="navbar" class="navbar clr">
-        <nav id="site-navigation" class="navigation main-navigation span_18 " role="navigation">
+        <nav id="site-navigation" class="navigation main-navigation " role="navigation">
             <span class="nav-toggle"><?php _e( 'Menu', 'wpex' ); ?><i class="toggle-icon fa fa-arrow-down"></i></span>
             <?php wp_nav_menu( array(
                 'theme_location'	=> 'main_menu',
@@ -68,7 +68,7 @@
             ) ); ?>
         </nav><!-- #site-navigation -->
         <?php if ( of_get_option('masthead_search','1') ) { ?>
-            <div class="masthead-search  span_6">
+            <div class="masthead-search  clr">
                 <form method="get" id="searchform" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
                     <input type="search" class="field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" id="s" placeholder="<?php _e( 'Search', 'wpex' ); ?>&hellip;" />
                     <button type="submit" class="submit" id="searchsubmit"><i class="fa fa-search"></i></button>

@@ -245,7 +245,6 @@ class Walker {
 	 * @return string The hierarchical item output.
 	 */
 	public function walk( $elements, $max_depth) {
-
 		$args = array_slice(func_get_args(), 2);
 		$output = '';
 
