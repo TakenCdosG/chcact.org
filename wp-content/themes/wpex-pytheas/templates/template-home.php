@@ -9,6 +9,7 @@
 
 
 get_header(); ?>
+
 </div>
 <?php
 // Get homepage slider
