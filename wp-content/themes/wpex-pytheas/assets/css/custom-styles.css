@@ -55,11 +55,41 @@ body{
 .masthead-search{
     float: left;
 }
+
+
+/* BLOCK HEADER */
+
+#block_header{
+    padding: 20px;
+    background-color: #C1D6DB;
+}
+
+.page-header{
+
+    margin-bottom: 0;
+    padding: 0 0;
+    border-bottom: none;
+    font-family: Georgia;
+    font-size: 44px;
+    color: #23252F;
+}
+
+.page-header h1{
+
+    font-family: Georgia;
+    font-size: 44px;
+    color: #23252F;
+    font-weight: normal;
+    margin-bottom: 26px;
+    margin-top: 30px;
+}
+
 /* MENU HEADER */
 
 #navbar{
     min-height: 44px;
     background: url("../images/bg_navbar.png") repeat-x;
+    border-bottom: none;
 }
 .nav-menu{
     border-right: none;
@@ -123,14 +153,6 @@ body{
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
-}
-
-
-/* BLOCK HEADER */
-
-#block_header{
-    padding: 20px;
-    background-color: #C1D6DB;
 }
 
 /* FOOTER */
@@ -216,4 +238,12 @@ body{
         padding: 8px 8px ;
     }
 
+}
+
+
+/* CONTENT */
+
+
+#primary{
+    padding: 25px 20px;
 }

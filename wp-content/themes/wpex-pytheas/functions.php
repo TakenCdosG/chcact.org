@@ -1,6 +1,6 @@
 <?php
 /** Akendos Custom functions and definitions */
-//require_once( 'assets/functions.php' );
+require_once( get_template_directory() .'/assets/functions/functions.php');
 
 
 /**

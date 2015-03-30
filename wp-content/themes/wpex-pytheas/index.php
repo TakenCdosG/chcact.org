@@ -19,6 +19,7 @@ get_header(); ?>
 	<header class="page-header clr">
 		<h1><?php _e( 'The Blog', 'wpex' ); ?></h1>
 	</header><!-- /.page-header -->
+	</div>
 	
 	<div id="primary" class="content-area span_16 col clr clr-margin">
 		<div id="content" class="site-content" role="main">
