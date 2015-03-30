@@ -25,7 +25,7 @@ get_template_part( 'content', 'slider' ); ?>
 	if( of_get_option( 'home_tagline' ) ) { ?>
 	
 		<div id="home-tagline" class="clr home-block">
-			<?php echo of_get_option('home_tagline','Home Tagline Sample'); ?>
+			<?php echo of_get_option('home_tagline','Home Tagline Sample'); ?>!!
 		</div>
 		<!-- /home-tagline -->
 		
@@ -86,6 +86,8 @@ get_template_part( 'content', 'slider' ); ?>
 				'post_type'		=> 'portfolio',
 				'showposts'		=> of_get_option('home_portfolio_count','4'),
 				'no_found_rows'	=> true,
+               /* 'orderby' => 'ORDER',*/
+                'order'   => 'asc',
 			)
 		);
 		
@@ -114,10 +116,10 @@ get_template_part( 'content', 'slider' ); ?>
 		wp_reset_postdata(); $wpex_query = NULL;
 		
 	} // End Portfolio Section
-	
-	
-	
-	
+
+
+
+
 	/*--------------------------------------*/
 	/* Recent Standard Posts
 	/*--------------------------------------*/

@@ -1,4 +1,8 @@
 <?php
+/** Akendos Custom functions and definitions */
+//require_once( 'assets/functions.php' );
+
+
 /**
  * Pytheas functions and definitions.
  *
@@ -19,7 +23,6 @@
  * @subpackage Pytheas
  * @since Pytheas 1.0
  */
-
 
 
 /*--------------------------------------*/

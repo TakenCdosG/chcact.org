@@ -62,19 +62,20 @@ if ( is_singular() && !$wpex_query ) { ?>
 
 
 	<article id="#post-<?php the_ID(); ?>" <?php post_class('portfolio-entry col span_6 '. $wpex_clr_margin); ?>>
-		<?php
-		// Display featured image
-		if( has_post_thumbnail() ) { ?>
-			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="portfolio-entry-img-link">
-				<img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ), wpex_img('portfolio_entry_width'),  wpex_img('portfolio_entry_height'),  wpex_img('portfolio_entry_crop') ) ?>" alt="<?php the_title(); ?>" class="portfolio-entry-img" />
-			</a>
-		<?php } ?>
+
 		<div class="portfolio-entry-description">
 			<h2><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+            <?php
+            // Display featured image
+            if( has_post_thumbnail() ) { ?>
+                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="portfolio-entry-img-link">
+                    <img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ), wpex_img('portfolio_entry_width'),  wpex_img('portfolio_entry_height'),  wpex_img('portfolio_entry_crop') ) ?>" alt="<?php the_title(); ?>" class="portfolio-entry-img" />
+                </a>
+            <?php } ?>
 			<div class="portfolio-entry-excerpt">
 				<?php
-				//show trimmed excerpt if default excerpt is empty
-				echo ( !empty( $post->post_excerpt) ) ? get_the_excerpt() : wp_trim_words(get_the_content(), 15); ?>
+				//show original text if default excerpt is empty
+				echo ( !empty( $post->post_excerpt) ) ? get_the_excerpt() : get_the_content(); ?>
 			</div><!-- .portfolio-entry-excerpt -->
 		</div><!-- .portfolio-entry-description -->
 	</article><!-- /portfolio-entry -->
