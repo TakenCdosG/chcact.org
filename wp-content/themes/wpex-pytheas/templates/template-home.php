@@ -144,20 +144,24 @@ get_template_part( 'content', 'slider' ); ?>
 					</h2>
 				<?php } ?>
 				<div class="row clr">
-					<?php
+
+                    <div id="home-twitter" class="col span_10">
+                        twitter
+                    </div>
+
+                    <div id="home-about" class="col span_7">
+                        about
+                    </div>
+
+                    <div id="home-news" class="col span_6">
+                        <?php
 					// Begin Loop
 					$wpex_count=0;
 					foreach( $wpex_query->posts as $post ) : setup_postdata( $post );
 						$wpex_count++;
 						$wpex_clr_margin = ( $wpex_count == 1 ) ? 'clr-margin' : NULL; ?>
-					<div <?php post_class('home-blog-entry span_6 col '. $wpex_clr_margin); ?>>
-						<?php
-						//featured image
-						if( has_post_thumbnail() ) { ?>
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="home-blog-entry-img-link">
-								<img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ), wpex_img('blog_related_entry_width'),  wpex_img('blog_related_entry_height'),  wpex_img('blog_related_entry_crop') ); ?>" alt="<?php echo the_title(); ?>" class="blog-entry-img" />
-							</a>
-						<?php } ?>
+					<div <?php post_class('home-blog-entry '. $wpex_clr_margin); ?>>
+
 						<h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 						<div class="home-blog-entry-excerpt">
 							<?php 
@@ -173,6 +177,9 @@ get_template_part( 'content', 'slider' ); ?>
 						$wpex_count=0;
 					}
 					endforeach; ?>
+                    </div>
+
+
 				</div><!-- /row -->
 			</div><!-- /home-blog -->
 		<?php
