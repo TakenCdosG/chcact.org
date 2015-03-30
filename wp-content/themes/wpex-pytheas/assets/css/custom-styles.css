@@ -257,9 +257,9 @@ body{
     padding: 20px;
 }
 
-@media (min-width: 768px){.col {
-    margin-left: 0;
-}}
+@media (min-width: 768px){
+
+}
 
 
 /* MENU LEFT*/
