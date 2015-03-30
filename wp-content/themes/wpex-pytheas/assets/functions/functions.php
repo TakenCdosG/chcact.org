@@ -1,7 +1,9 @@
 <?php
-/* Aux Menu functions */
+/* AXU MENU FUNCTIONS */
 
 require_once( get_template_directory() .'/assets/functions/menus-functions.php');
+
+
 
 /*
 function my_format_TinyMCE( $in ) {
