@@ -15,7 +15,7 @@ get_header(); ?>
 	</div>
 
 	<div id="primary" class="content-area row clr">
-		<div id="left-menu" class="span_6  col">
+		<div id="left-menu" class="clr-margin span_6  col">
 			<?php
 			wp_nav_menu( array(
 				'theme_location'	=> 'footer_menu',

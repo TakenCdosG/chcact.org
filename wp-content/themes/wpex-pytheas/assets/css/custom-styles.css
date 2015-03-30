@@ -248,17 +248,10 @@ body{
     padding: 25px 20px;
 }
 
-#content{
-    padding-left: 20px;
-}
 
 /* HOME */
 #home-wrap{
     padding: 20px;
-}
-
-@media (min-width: 768px){
-
 }
 
 
