@@ -145,15 +145,17 @@ get_template_part( 'content', 'slider' ); ?>
 				<?php } ?>
 				<div class="row clr">
 
-                    <div id="home-twitter" class="col span_10">
-                        twitter
+                    <div id="home-twitter" class="col span_10 clr-margin">
+                       <h2>Twitter Feed</h2>
                     </div>
 
                     <div id="home-about" class="col span_7">
-                        about
+                        <h2>About Us</h2>
+                        <span><?php echo of_get_option( 'home_about', '' ); ?></span>
                     </div>
 
-                    <div id="home-news" class="col span_6">
+                    <div id="home-news" class="col span_7">
+                        <h2>News</h2>
                         <?php
 					// Begin Loop
 					$wpex_count=0;

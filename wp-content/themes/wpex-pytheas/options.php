@@ -84,6 +84,13 @@ function optionsframework_options() {
 		'id' => 'custom_copyright',
 		'std' => '<a href="http://wordpress.org" title="WordPress">WordPress</a>'. __('Theme by','wpex') .'<a href="http://wpexplorer.me" title="WPExplorer">WPExplorer</a>',
 		'type' => 'textarea');
+
+    $options['home_about'] = array(
+        'name' => __('About Section', 'wpex'),
+        'desc' => __('', 'wpex'),
+        'id' => 'home_about',
+        'std' => '<a href="http://wordpress.org" title="WordPress">WordPress</a>'. __('Theme by','wpex') .'<a href="http://wpexplorer.me" title="WPExplorer">WPExplorer</a>',
+        'type' => 'textarea');
 		
 		
 	//Slider
