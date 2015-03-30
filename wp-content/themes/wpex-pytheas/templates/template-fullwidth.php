@@ -9,9 +9,10 @@
 
 get_header(); ?>
 
-	<header class="page-header">
-		<h1 class="page-header-title"><?php the_title(); ?></h1>
-	</header>
+		<header class="page-header">
+			<h1 class="page-header-title"><?php the_title(); ?></h1>
+		</header>
+	</div>
 
 	<div id="primary" class="content-area span_24 row clr">
 		<div id="content" class="site-content" role="main">
