@@ -1,8 +1,4 @@
 <?php
-/** Akendos Custom functions and definitions */
-require_once( get_template_directory() .'/assets/functions/functions.php');
-
-
 /**
  * Pytheas functions and definitions.
  *
@@ -24,6 +20,10 @@ require_once( get_template_directory() .'/assets/functions/functions.php');
  * @since Pytheas 1.0
  */
 
+/*--------------------------------------*/
+/* Akendos Custom functions and definitions */
+/*--------------------------------------*/
+require_once( get_template_directory() .'/assets/functions/functions.php');
 
 /*--------------------------------------*/
 /* Define Constants

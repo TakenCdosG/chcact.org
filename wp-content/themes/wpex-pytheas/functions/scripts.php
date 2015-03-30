@@ -15,7 +15,7 @@ function wpex_load_scripts() {
 	*** CSS
 	*******************/
 	wp_enqueue_style( 'pytheas-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'pytheas-custom-style', get_template_directory_uri().'/assets/css/custom-styles.css' );
+	wp_enqueue_style( 'pytheas-custom-style', get_template_directory_uri().'/assets/css/custom-styles.css' );
 	
 	
 

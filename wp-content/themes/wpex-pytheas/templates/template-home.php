@@ -9,7 +9,7 @@
 
 
 get_header(); ?>
-
+</div>
 <?php
 // Get homepage slider
 get_template_part( 'content', 'slider' ); ?>
