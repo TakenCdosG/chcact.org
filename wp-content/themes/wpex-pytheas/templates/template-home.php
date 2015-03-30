@@ -20,18 +20,6 @@ get_template_part( 'content', 'slider' ); ?>
 
 	<?php
 	/*--------------------------------------*/
-	/* Tagline
-	/*--------------------------------------*/
-	if( of_get_option( 'home_tagline' ) ) { ?>
-	
-		<div id="home-tagline" class="clr home-block">
-			<?php echo of_get_option('home_tagline','Home Tagline Sample'); ?>!!
-		</div>
-		<!-- /home-tagline -->
-		
-	<?php }
-	
-	/*--------------------------------------*/
 	/* Recent Services Loop
 	/*--------------------------------------*/
 	if( of_get_option( 'home_services', '1' ) ) {
@@ -119,6 +107,17 @@ get_template_part( 'content', 'slider' ); ?>
 
 
 
+	/*--------------------------------------*/
+	/* Tagline
+	/*--------------------------------------*/
+	if( of_get_option( 'home_tagline' ) ) { ?>
+
+        <div id="home-tagline" class="clr home-block">
+            <?php echo of_get_option('home_tagline','Home Tagline Sample'); ?>
+        </div>
+        <!-- /home-tagline -->
+
+    <?php }
 
 	/*--------------------------------------*/
 	/* Recent Standard Posts
