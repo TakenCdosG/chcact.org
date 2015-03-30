@@ -4,8 +4,8 @@
 * This file is a modified of the original plugin found @https://github.com/devinsays/portfolio-post-type - Special Thanks!
 ***/
 
-if ( ! class_exists( 'Symple_Portfolio_Post_Type' ) ) :
-class Symple_Portfolio_Post_Type {
+if ( ! class_exists( 'Symple_Widget_Post_Type' ) ) :
+class Symple_Widget_Post_Type {
 
 	function __construct() {
 
@@ -28,21 +28,21 @@ class Symple_Portfolio_Post_Type {
 	function portfolio_init() {
 
 		/**
-		 * Enable the Portfolio custom post type
+		 * Enable the Widget custom post type
 		 * http://codex.wordpress.org/Function_Reference/register_post_type
 		 */
 
 		$labels = array(
-			'name'					=> __( 'Portfolio', 'wpex' ),
-			'singular_name'			=> __( 'Portfolio Item', 'wpex' ),
+			'name'					=> __( 'Widget', 'wpex' ),
+			'singular_name'			=> __( 'Widget Item', 'wpex' ),
 			'add_new'				=> __( 'Add New Item', 'wpex' ),
-			'add_new_item'			=> __( 'Add New Portfolio Item', 'wpex' ),
-			'edit_item'				=> __( 'Edit Portfolio Item', 'wpex' ),
-			'new_item'				=> __( 'Add New Portfolio Item', 'wpex' ),
+			'add_new_item'			=> __( 'Add New Widget Item', 'wpex' ),
+			'edit_item'				=> __( 'Edit Widget Item', 'wpex' ),
+			'new_item'				=> __( 'Add New Widget Item', 'wpex' ),
 			'view_item'				=> __( 'View Item', 'wpex' ),
-			'search_items'			=> __( 'Search Portfolio', 'wpex' ),
-			'not_found'				=> __( 'No portfolio items found', 'wpex' ),
-			'not_found_in_trash'	=> __( 'No portfolio items found in trash', 'wpex' )
+			'search_items'			=> __( 'Search Widget', 'wpex' ),
+			'not_found'				=> __( 'No widget items found', 'wpex' ),
+			'not_found_in_trash'	=> __( 'No widget items found in trash', 'wpex' )
 		);
 		
 		$args = array(
@@ -52,7 +52,7 @@ class Symple_Portfolio_Post_Type {
 			'capability_type'	=> 'post',
 			'rewrite'			=> array( "slug" => "portfolio" ), // Permalinks format
 			'has_archive'		=> true,
-			'menu_icon'			=> 'dashicons-portfolio',
+			'menu_icon'			=> 'dashicons-align-center',
 		); 
 		
 		$args = apply_filters('symple_portfolio_args', $args);
@@ -60,26 +60,26 @@ class Symple_Portfolio_Post_Type {
 		register_post_type( 'portfolio', $args );
 
 		/**
-		 * Register a taxonomy for Portfolio Tags
+		 * Register a taxonomy for Widget Tags
 		 * http://codex.wordpress.org/Function_Reference/register_taxonomy
 		 */
 
 		$taxonomy_portfolio_tag_labels = array(
-			'name'							=> __( 'Portfolio Tags', 'wpex' ),
-			'singular_name'					=> __( 'Portfolio Tag', 'wpex' ),
-			'search_items'					=> __( 'Search Portfolio Tags', 'wpex' ),
-			'popular_items'					=> __( 'Popular Portfolio Tags', 'wpex' ),
-			'all_items'						=> __( 'All Portfolio Tags', 'wpex' ),
-			'parent_item'					=> __( 'Parent Portfolio Tag', 'wpex' ),
-			'parent_item_colon'				=> __( 'Parent Portfolio Tag:', 'wpex' ),
-			'edit_item'						=> __( 'Edit Portfolio Tag', 'wpex' ),
-			'update_item'					=> __( 'Update Portfolio Tag', 'wpex' ),
-			'add_new_item'					=> __( 'Add New Portfolio Tag', 'wpex' ),
-			'new_item_name'					=> __( 'New Portfolio Tag Name', 'wpex' ),
+			'name'							=> __( 'Widget Tags', 'wpex' ),
+			'singular_name'					=> __( 'Widget Tag', 'wpex' ),
+			'search_items'					=> __( 'Search Widget Tags', 'wpex' ),
+			'popular_items'					=> __( 'Popular Widget Tags', 'wpex' ),
+			'all_items'						=> __( 'All Widget Tags', 'wpex' ),
+			'parent_item'					=> __( 'Parent Widget Tag', 'wpex' ),
+			'parent_item_colon'				=> __( 'Parent Widget Tag:', 'wpex' ),
+			'edit_item'						=> __( 'Edit Widget Tag', 'wpex' ),
+			'update_item'					=> __( 'Update Widget Tag', 'wpex' ),
+			'add_new_item'					=> __( 'Add New Widget Tag', 'wpex' ),
+			'new_item_name'					=> __( 'New Widget Tag Name', 'wpex' ),
 			'separate_items_with_commas'	=> __( 'Separate portfolio tags with commas', 'wpex' ),
 			'add_or_remove_items'			=> __( 'Add or remove portfolio tags', 'wpex' ),
 			'choose_from_most_used'			=> __( 'Choose from the most used portfolio tags', 'wpex' ),
-			'menu_name'						=> __( 'Portfolio Tags', 'wpex' )
+			'menu_name'						=> __( 'Widget Tags', 'wpex' )
 		);
 
 		$taxonomy_portfolio_tag_args = array(
@@ -98,26 +98,26 @@ class Symple_Portfolio_Post_Type {
 		register_taxonomy( 'portfolio_tag', array( 'portfolio' ), $taxonomy_portfolio_tag_args );
 
 		/**
-		 * Register a taxonomy for Portfolio Categories
+		 * Register a taxonomy for Widget Categories
 		 * http://codex.wordpress.org/Function_Reference/register_taxonomy
 		 */
 
 		$taxonomy_portfolio_category_labels = array(
-			'name'							=> __( 'Portfolio Categories', 'wpex' ),
-			'singular_name'					> __( 'Portfolio Category', 'wpex' ),
-			'search_items'					=> __( 'Search Portfolio Categories', 'wpex' ),
-			'popular_items'					=> __( 'Popular Portfolio Categories', 'wpex' ),
-			'all_items'						=> __( 'All Portfolio Categories', 'wpex' ),
-			'parent_item'					=> __( 'Parent Portfolio Category', 'wpex' ),
-			'parent_item_colon'				=> __( 'Parent Portfolio Category:', 'wpex' ),
-			'edit_item'						=> __( 'Edit Portfolio Category', 'wpex' ),
-			'update_item'					=> __( 'Update Portfolio Category', 'wpex' ),
-			'add_new_item'					=> __( 'Add New Portfolio Category', 'wpex' ),
-			'new_item_name'					=> __( 'New Portfolio Category Name', 'wpex' ),
+			'name'							=> __( 'Widget Categories', 'wpex' ),
+			'singular_name'					> __( 'Widget Category', 'wpex' ),
+			'search_items'					=> __( 'Search Widget Categories', 'wpex' ),
+			'popular_items'					=> __( 'Popular Widget Categories', 'wpex' ),
+			'all_items'						=> __( 'All Widget Categories', 'wpex' ),
+			'parent_item'					=> __( 'Parent Widget Category', 'wpex' ),
+			'parent_item_colon'				=> __( 'Parent Widget Category:', 'wpex' ),
+			'edit_item'						=> __( 'Edit Widget Category', 'wpex' ),
+			'update_item'					=> __( 'Update Widget Category', 'wpex' ),
+			'add_new_item'					=> __( 'Add New Widget Category', 'wpex' ),
+			'new_item_name'					=> __( 'New Widget Category Name', 'wpex' ),
 			'separate_items_with_commas'	=> __( 'Separate portfolio categories with commas', 'wpex' ),
 			'add_or_remove_items'			=> __( 'Add or remove portfolio categories', 'wpex' ),
 			'choose_from_most_used'			=> __( 'Choose from the most used portfolio categories', 'wpex' ),
-			'menu_name'						=> __( 'Portfolio Categories', 'wpex' ),
+			'menu_name'						=> __( 'Widget Categories', 'wpex' ),
 		);
 
 		$taxonomy_portfolio_category_args = array(
@@ -138,7 +138,7 @@ class Symple_Portfolio_Post_Type {
 	}
 
 	/**
-	 * Add Columns to Portfolio Edit Screen
+	 * Add Columns to Widget Edit Screen
 	 * http://wptheming.com/2010/07/column-edit-pages/
 	 */
 
@@ -225,7 +225,7 @@ class Symple_Portfolio_Post_Type {
 	}
 
 	/**
-	 * Add Portfolio count to "Right Now" Dashboard Widget
+	 * Add Widget count to "Right Now" Dashboard Widget
 	 */
 
 	function add_portfolio_counts() {
@@ -235,7 +235,7 @@ class Symple_Portfolio_Post_Type {
 
 			$num_posts = wp_count_posts( 'portfolio' );
 			$num = number_format_i18n( $num_posts->publish );
-			$text = _n( 'Portfolio Item', 'Portfolio Items', intval($num_posts->publish) );
+			$text = _n( 'Widget Item', 'Widget Items', intval($num_posts->publish) );
 			if ( current_user_can( 'edit_posts' ) ) {
 				$num = "<a href='edit.php?post_type=portfolio'>$num</a>";
 				$text = "<a href='edit.php?post_type=portfolio'>$text</a>";
@@ -246,7 +246,7 @@ class Symple_Portfolio_Post_Type {
 
 			if ($num_posts->pending > 0) {
 				$num = number_format_i18n( $num_posts->pending );
-				$text = _n( 'Portfolio Item Pending', 'Portfolio Items Pending', intval($num_posts->pending) );
+				$text = _n( 'Widget Item Pending', 'Widget Items Pending', intval($num_posts->pending) );
 				if ( current_user_can( 'edit_posts' ) ) {
 					$num = "<a href='edit.php?post_status=pending&post_type=portfolio'>$num</a>";
 					$text = "<a href='edit.php?post_status=pending&post_type=portfolio'>$text</a>";
@@ -260,6 +260,6 @@ class Symple_Portfolio_Post_Type {
 
 }
 
-new Symple_Portfolio_Post_Type;
+new Symple_Widget_Post_Type;
 
 endif;
