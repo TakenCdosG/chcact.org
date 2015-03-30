@@ -147,6 +147,10 @@ get_template_part( 'content', 'slider' ); ?>
 
                     <div id="home-twitter" class="col span_10 clr-margin">
                        <h2>Twitter Feed</h2>
+                        <?php
+                            include_once('tweetfeed.php');
+
+                        ?>
                     </div>
 
                     <div id="home-about" class="col span_7">
