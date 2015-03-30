@@ -77,11 +77,11 @@
 		            </div><!-- /masthead-search -->
 		        <?php } ?>
 		    </div><!-- #navbar -->
-				<?php if ( is_singular('page') && has_post_thumbnail() ) { ?>
+				<?php /*if ( is_singular('page') && has_post_thumbnail() ) { */?><!--
 					<div id="page-featured-img">
-						<?php global $post; the_post_thumbnail( $post->ID ); ?>
+						<?php /*global $post; the_post_thumbnail( $post->ID ); */?>
 					</div><!-- #page-featured-img -->
-				<?php } ?>
+				<?php /*} */?>
 				<?php
 				//Yoast SEO breadcrumbs
 				if ( !is_front_page() && !is_404() ) {

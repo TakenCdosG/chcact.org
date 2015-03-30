@@ -14,8 +14,17 @@ get_header(); ?>
 		</header>
 	</div>
 
-	<div id="primary" class="content-area span_24 row clr">
-		<div id="content" class="site-content" role="main">
+	<div id="primary" class="content-area row clr">
+		<div id="left-menu" class="span_6  col">
+			<?php
+			wp_nav_menu( array(
+				'theme_location'	=> 'footer_menu',
+				'sort_column'		=> 'menu_order',
+				'fallback_cb'		=> '',
+				'walker' => new WPEX_Walker_Nav_Menu_left()
+			)); ?>
+		</div><!-- /footer-menu -->
+		<div id="content" class="site-content span_18 col" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 

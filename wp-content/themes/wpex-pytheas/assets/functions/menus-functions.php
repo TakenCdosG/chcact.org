@@ -9,9 +9,12 @@ register_nav_menus (
 );
 
 
-/* Menu Walker */
+/* Menu Walkers */
 
+
+/* Walker Menu Footer */
 class WPEX_Walker_Nav_Menu_footer extends Walker_Nav_Menu {
+
 	/*function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
 	if($element->menu_order !=1 && $element->menu_item_parent == 0){
 	//$children_elements = NULL;
@@ -23,7 +26,7 @@ class WPEX_Walker_Nav_Menu_footer extends Walker_Nav_Menu {
 
 	foreach($elements as $key => $element){
 	if($element->menu_order == 1 || $element->menu_item_parent != 0){
-	unset($elements[$key]);
+		unset($elements[$key]);
 	}
 	}
 
@@ -32,3 +35,31 @@ class WPEX_Walker_Nav_Menu_footer extends Walker_Nav_Menu {
 
 }
 
+
+Class WPEX_Walker_Nav_Menu_left extends Walker_Nav_Menu{
+
+
+	function walk( $elements, $max_depth){
+
+		//d($elements);
+
+
+		foreach($elements as $key => $element){
+
+			if($element->current_item_ancestor == TRUE || ($element->current == TRUE && $element->menu_item_parent == 0) ){
+				$menu_item_parent = $element->ID;
+			}
+		}
+		//d($menu_item_parent);
+
+		foreach($elements as $key => $element){
+
+			if($element->menu_item_parent != $menu_item_parent){
+				unset($elements[$key]);
+			}
+		}
+
+		return Walker_Nav_Menu::walk( $elements, $max_depth);
+	}
+
+}
