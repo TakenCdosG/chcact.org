@@ -27,14 +27,15 @@ foreach($string as $items)
     {
         if ($items['retweeted_status']==""){
             echo "<strong>". $items['user']['name']."</strong> @".$items['user']['screen_name']."<br />";
-            echo $items['text']."<br/><hr />";
+            echo $items['text']."<br/>";
         }
         else
         {
             echo "<strong>".$items['retweeted_status']['user']['name']."</strong> @".$items['retweeted_status']['user']['screen_name']."<br/>";       
             echo $items['retweeted_status']['text']."<br />";
-            echo "Retweeted by ".$items['user']['screen_name']."<br /><hr />";
+            echo "Retweeted by ".$items['user']['screen_name']."<br />";
         }
+        echo "<br />";
         
     }
 ?>

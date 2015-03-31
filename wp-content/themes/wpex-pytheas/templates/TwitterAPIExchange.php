@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Twitter-API-PHP : Simple PHP wrapper for the v1.1 API
  * 
@@ -194,6 +195,7 @@ class TwitterAPIExchange
             CURLOPT_HEADER => false,
             CURLOPT_URL => $this->url,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER=> 0,
             CURLOPT_TIMEOUT => 10,
         );
 

@@ -13,7 +13,7 @@ $settings = array(
 $url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 $requestMethod = "GET";
 if (isset($_GET['user']))  {$user = $_GET['user'];}  else {$user  = "CTHealthCenters";}
-if (isset($_GET['count'])) {$user = $_GET['count'];} else {$count = 2;}
+if (isset($_GET['count'])) {$user = $_GET['count'];} else {$count = 20;}
 $getfield = "?screen_name=$user&count=$count";
 $twitter = new TwitterAPIExchange($settings);
 $string = json_decode($twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest(),$assoc = TRUE);
@@ -26,13 +26,13 @@ foreach($string as $items)
     {
         if ($items['retweeted_status']==""){
             echo "<strong>". $items['user']['name']."</strong> @".$items['user']['screen_name']."<br />";
-            echo $items['text']."<br/><hr />";
+            echo $items['text']."<br/>";
         }
         else
         {
             echo "<strong>".$items['retweeted_status']['user']['name']."</strong> @".$items['retweeted_status']['user']['screen_name']."<br/>";       
             echo $items['retweeted_status']['text']."<br />";
-            echo "Retweeted by ".$items['user']['screen_name']."<br /><hr />";
+            echo "Retweeted by ".$items['user']['screen_name']."<br />";
         }
         
     }
