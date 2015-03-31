@@ -27,8 +27,10 @@ if ( !function_exists('wpex_display_social') ) {
 	function wpex_display_social() {
 		
 		$wpex_social_links = wpex_social_links();
-		
-		if ( !$wpex_social_links ) return;
+        $social_icons_message = array('twitter' => 'Follow us on Twitter','google' => 'add us to your circles','facebook' => 'Like us on Facebook','linkedin' => 'Follow CHCACT on LinkedIn','flickr' => 'flickr','pinterest' => 'Follow us on pinterest','github' => 'github','behance' => 'behance','dribbble' => 'dribbble','forrst' => 'forrst','youtube' => 'Watch CHCACT\'s videos on YouTube','vimeo' => 'vimeo','skype' => 'skype','paypal' => 'paypal','envato' => 'envato','gowalla' => 'gowalla','icloud' => 'icloud','evernote' => 'evernote','quora' => 'quora','wordpress' => 'wordpress','rss' => 'Read our blog at Get-Centered.org');
+
+
+        if ( !$wpex_social_links ) return;
 		
 		$output = '<ul id="social" class="clr">';
 			
