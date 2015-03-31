@@ -38,7 +38,7 @@ if ( !function_exists('wpex_display_social') ) {
 					
 					if ( of_get_option( $social_link ) ) {
 					
-						$output .= '<li><a href="'. of_get_option( $social_link ) .'" title="'. $social_link .'" target="_blank"><img src="'. get_template_directory_uri() .'/images/social/'.$social_link.'.png" alt="'. $social_icons_message[$social_link] .'" /></a></li>';
+						$output .= '<li><a href="'. of_get_option( $social_link ) .'" title="'. $social_icons_message[$social_link] .'" target="_blank"><img src="'. get_template_directory_uri() .'/images/social/'.$social_link.'.png" alt="'. $social_icons_message[$social_link] .'" /></a></li>';
 					
 					}
 					
