@@ -52,14 +52,21 @@ if ( '' != of_get_option( 'slides_alt' ) ) {
 								<?php } else {
 									if( '' != get_post_meta( get_the_ID(), 'wpex_slides_url', true ) ) { ?>
 									<a href="<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url', true); ?>" title="<?php the_title_attribute(); ?>" target="_<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url_target', true); ?>">
-										<img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ),  wpex_img( 'slider_width' ), wpex_img( 'slider_height' ), wpex_img( 'slider_crop' ) ); ?>" alt="<?php the_title(); ?>" />
-									</a>
+                                        <img class="news-slider-img" src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ),  396, 233, wpex_img( 'slider_crop' ) ); ?>" alt="<?php the_title(); ?>" />
+                                    </a>
 									<?php } else { ?>
-										<img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ),  wpex_img( 'slider_width' ), wpex_img( 'slider_height' ), wpex_img( 'slider_crop' ) ); ?>" alt="<?php the_title(); ?>" />
+										<img class="news-slider-img" src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ),  396, 233, wpex_img( 'slider_crop' ) ); ?>" alt="<?php the_title(); ?>" />
 								<?php }
 								 }
+
 								 if( $post->post_content ) { ?>
-									<div class="flex-caption"><?php the_content(); ?></div>
+									<div class="flex-cap">
+                                        <a href="<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url', true); ?>" title="<?php the_title_attribute(); ?>" target="_<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url_target', true); ?>">
+                                        <h2><?php the_title();?></h2>
+                                        </a>
+                                       <?php the_content(); ?>
+
+                                    </div>
 								<?php } ?>
 							</div><!--/ slide-inner -->
 						</li>
