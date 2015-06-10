@@ -44,7 +44,7 @@ else {
 				<?php if( comments_open() ) { ?>
 					<li><span class="fa fa-comment"></span><?php comments_popup_link(__('Leave a comment', 'wpex'), __('1 Comment', 'wpex'), __('% Comments', 'wpex'), 'comments-link', __('Comments closed', 'wpex')); ?></li>
 				<?php } ?>
-				<li><span class="fa fa-user"></span><?php the_author_posts_link(); ?></li>
+                <!--<li><span class="fa fa-user"></span><?php //the_author_posts_link(); ?></li>-->
 			</ul><!-- .meta -->
 			<div class="blog-entry-content">
 				<?php
