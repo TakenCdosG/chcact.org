@@ -15,7 +15,7 @@ get_header(); ?>
     </div>
 
     <div id="primary" class="content-area row clr">
-        <div id="content" class="site-content span_24 col" role="main">
+        <div id="content" class="site-content span_18 col" role="main">
 
             <?php while ( have_posts() ) : the_post(); ?>
 
