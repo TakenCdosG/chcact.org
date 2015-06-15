@@ -363,3 +363,15 @@ table.cyfan-city td{
 table.cyfan-city td ul{
     margin: -15px 0 0 15px !important;
 }
+/*
+* LEFT MENU COLORS
+*/
+#left-menu .current-menu-item a{
+    background: #2C3A66;
+    color: #FFFFFF;
+}
+#left-menu .menu-item a:hover{
+    background: #2C3A66;
+    color: #FFFFFF;
+    text-decoration: none;
+}
