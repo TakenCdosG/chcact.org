@@ -375,3 +375,9 @@ table.cyfan-city td ul{
     color: #FFFFFF;
     text-decoration: none;
 }
+/*
+* HIDING LEFT MENU PAGES
+*/
+body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 div#left-menu{
+    display: none;
+}
