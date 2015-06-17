@@ -406,3 +406,20 @@ body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 d
         display: block;
     }
 }
+/*
+* FIXING TEXT CENTER USER LOGIN AND PHONE
+*/
+@media only screen and (min-width: 320px) and (max-width: 500px){
+    .masthead-right{
+        position: relative;
+        left:-20%;
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 501px) and (max-width: 597px){
+    .masthead-right{
+        position: relative;
+        left:-37%;
+        width: 100%;
+    }
+}
