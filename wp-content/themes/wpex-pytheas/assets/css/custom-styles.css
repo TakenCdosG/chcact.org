@@ -520,3 +520,11 @@ body.page-id-118 table, body.page-id-467 table{
         height: 232px;
     }
 }
+/*
+* LOGIN FORUM PAGE STYLE
+*/
+.wpbb-centered-bold{
+    padding-top: 10px;
+    margin-top: 10px;
+    background: #FFFFFF;
+}
