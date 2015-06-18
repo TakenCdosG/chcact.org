@@ -431,3 +431,9 @@ body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 d
         text-align: center;
     }
 }
+/*
+* GOOGLE MAP IN CONTACT US PAGE - RESPONSIVE
+*/
+article#post-165 iframe{
+    width: 100%;
+}
