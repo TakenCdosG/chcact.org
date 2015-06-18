@@ -434,7 +434,7 @@ body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 d
 /*
 * GOOGLE MAP IN CONTACT US PAGE - RESPONSIVE
 */
-article#post-165 iframe{
+article#post-165 iframe, article#post-118 iframe{
     width: 100%;
 }
 article#post-165 div.entry-content p img{
@@ -444,6 +444,11 @@ article#post-165 div.entry-content p img{
     article#post-165 div.entry-content p img{
         margin-right: 265px !important;
     }
+}
+/*CONTACT US PAGE RESPONSIVE*/
+body.page-id-118 table{
+    width: 100%;
+    font-size: 10px;
 }
 /*
 * SOCIAL ICONS BIGGER
