@@ -528,3 +528,10 @@ body.page-id-118 table, body.page-id-467 table{
     margin-top: 10px;
     background: #FFFFFF;
 }
+/*
+* SUBTITLE STYLE
+*/
+strong.orange-sub{
+    color: #f15a23;
+    font-size: 16px;
+}
