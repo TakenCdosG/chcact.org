@@ -535,3 +535,85 @@ strong.orange-sub{
     color: #f15a23;
     font-size: 16px;
 }
+/*
+* CATEGORIES PAGE STYLES
+*/
+li span.cat-style{
+    text-decoration: underline;
+}
+body.category article{
+    background: #FAFAFA;
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+}
+body.category .blog-entry-details{
+    padding: 20px;
+}
+body.category .blog-entry-details h2{
+    font-family: georgia-regular;
+    font-size: x-large;
+    color: #3e4e70;
+    font-weight: normal;
+}
+body.category .blog-entry-details h2 a{
+    color: #3e4e70;
+}
+body.category .corner-icon{
+    background: url(../images/news-item-corner.png);
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+body.category li.comments-text{
+    float: right;
+}
+body.category .meta li{
+    background: #FAFAFA;
+}
+body.category .news-comments{
+    background: url(../images/news-item-qmark.png);
+    width: 26px;
+    height: 25px;
+    display: block;
+    background-repeat: no-repeat;
+    float: right;
+    margin-left: 5px;
+}
+body.category .comment-link-text{
+    border-bottom: 1px dotted;
+}
+/* SIDEBAR STYLES*/
+body.category div.sidebar-inner{
+    position: relative;
+    top: 23px;
+    padding: 20px;
+    background-color: #FAFAFA;
+}
+body.category div.sidebar-inner h4 span{
+    font-family: arial;
+    color: #ec7d26;
+    font-size: large;
+    font-weight: 100;
+}
+body.category div.sidebar-inner ul{
+    position: relative;
+    top: -15px;
+}
+body.category div.sidebar-inner ul li a{
+    color: #151515;
+}
+body.category div.sidebar-inner h4.heading{
+    background: none;
+}
+body.category div.sidebar-inner h4 span{
+    background: #FAFAFA;
+}
+body.category div.sidebar-inner div.widget_ai1ec_agenda_widget{
+    border-top: 1px solid #dddddd;
+}
+body.category div.sidebar-inner div.widget_ai1ec_agenda_widget h4{
+    position: relative;
+    top: 10px;
+}
