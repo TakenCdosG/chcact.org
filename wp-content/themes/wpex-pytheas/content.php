@@ -17,7 +17,7 @@
 if ( is_singular() && is_main_query() ) {
 	 
 	if( of_get_option('blog_single_thumbnail' ) == '1' && has_post_thumbnail() ) { ?>
-		<a href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" title="<?php the_title_attribute(); ?>" class="prettyphoto-link" id="post-thumbnail"><img src="<?php echo aq_resize( wp_get_attachment_url( get_post_thumbnail_id() ), wpex_img('blog_post_width'),  wpex_img('blog_post_height'),  wpex_img('blog_post_crop') ) ?>" alt="<?php echo the_title(); ?>" /></a>
+
 	<?php }
 
 }
