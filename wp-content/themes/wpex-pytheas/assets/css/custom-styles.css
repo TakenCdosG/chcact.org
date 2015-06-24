@@ -4,7 +4,7 @@ body{
     background: #EDFBFF;
     font: 14px/1.8 Arial;
 }
-a:visited{
+div#content a:visited{
     color: #f15a23 !important;
 }
 #wrap{
