@@ -22,14 +22,7 @@ get_header(); ?>
 	<div id="primary" class="content-area span_16 col clr clr-margin">
 		<div id="content" class="site-content" role="main">
 			<?php if ( !post_password_required() ) { ?>
-				<ul class="meta single-meta clr">
-					<li><span class="fa fa-clock-o"></span><?php echo get_the_date(); ?></li>
-					<li><span class="fa fa-folder-open"></span><?php the_category(' / '); ?></li>
-					<?php if( comments_open() ) { ?>
-						<li class="comment-scroll"><span class="fa fa-comment"></span> <?php comments_popup_link(__('Leave a comment', 'wpex'), __('1 Comment', 'wpex'), __('% Comments', 'wpex'), 'comments-link', __('Comments closed', 'wpex')); ?></li>
-					<?php } ?>
-					<!--<li><span class="fa fa-user"></span><?php //the_author_posts_link(); ?></li>-->
-				</ul><!-- .meta -->
+
 			<?php get_template_part('content', get_post_format() ); ?>
 			<?php } ?>
 			<article class="entry clr">

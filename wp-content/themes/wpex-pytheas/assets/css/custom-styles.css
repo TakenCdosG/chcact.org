@@ -551,7 +551,10 @@ body.category .blog-entry-details h2{
     font-weight: normal;
 }
 body.category .blog-entry-details h2 a{
-    color: #3e4e70;
+    color: #3e4e70 !important;
+}
+body.category .blog-entry-details h2 a:visited{
+    color: #3e4e70 !important;
 }
 body.category .corner-icon{
     background: url(../images/news-item-corner.png);
@@ -619,3 +622,34 @@ body.category div.sidebar-inner div.widget_ai1ec_agenda_widget h4{
 body.single-post table, body.single-post table td{
     border: none;
 }
+/*
+* NEWSLETTER TEMPLATE
+*/
+
+body.single-post table{
+    background: #FAFAFA;
+    width: 100%;
+    margin-top: 30px;
+}
+body.single-post table:first-child{
+    background: #FAFAFA;
+    width: 100%;
+    margin-top: 1px;
+}
+body.single-post table td{
+    padding: 20px;
+}
+body.single-post table h2{
+    margin: 0px 0px 20px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
