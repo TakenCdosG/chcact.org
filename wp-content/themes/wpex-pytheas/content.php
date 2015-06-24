@@ -35,7 +35,7 @@ else {
 		<div class="blog-entry-details">
 			<header><h2><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2></header>
 			<ul class="meta clr">
-                <li>by: <?php the_author_posts_link(); ?> · <?php echo get_the_date("j F"); ?></li>
+                <li><?php echo get_the_date("j F"); ?></li>
 			</ul><!-- .meta -->
 			<div class="blog-entry-content">
 				<?php
