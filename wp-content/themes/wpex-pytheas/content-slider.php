@@ -15,9 +15,11 @@ if ( '' != of_get_option( 'slides_alt' ) ) {
 	// Get slides
 	$wpex_query = new WP_Query(
 		array(
-			'post_type'			=> 'slides',
-			'posts_per_page'	=> '-1',
-			'no_found_rows'		=> true,
+			//'post_type'			=> 'slides',
+            'category_names'    => 'news',
+            //'posts_per_page'	=> '-1',
+            'posts_per_page'	=> '5',
+            'no_found_rows'		=> true,
 		)
 	);
 	// Display Slides
@@ -34,7 +36,8 @@ if ( '' != of_get_option( 'slides_alt' ) ) {
 			'animation'			=> of_get_option('slides_animation', 'slide'),
 			'direction'			=> of_get_option('slides_direction', 'horizontal'),
 			'slideshowSpeed'	=> of_get_option('slideshow_speed', '7000'),
-			'animationSpeed'	=> of_get_option('animation_speed', '600')
+			'animationSpeed'	=> of_get_option('animation_speed', '600'),
+            'controlNav'        => of_get_option('controlNav', true)
 		);
 		
 		// Localize slider script
@@ -61,10 +64,10 @@ if ( '' != of_get_option( 'slides_alt' ) ) {
 
 								 if( $post->post_content ) { ?>
 									<div class="flex-cap">
-                                        <a href="<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url', true); ?>" title="<?php the_title_attribute(); ?>" target="_<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url_target', true); ?>">
+                                        <a href="<?php the_permalink(); //echo get_post_meta( get_the_ID(), 'wpex_slides_url', true); ?>" title="<?php the_title_attribute(); ?>" target="_<?php echo get_post_meta( get_the_ID(), 'wpex_slides_url_target', true); ?>">
                                         <h2><?php the_title();?></h2>
                                         </a>
-                                       <?php the_content(); ?>
+                                       <?php the_excerpt(); ?>
 
                                     </div>
 								<?php } ?>
