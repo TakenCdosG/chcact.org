@@ -619,7 +619,7 @@ body.category div.sidebar-inner div.widget_ai1ec_agenda_widget h4{
 /*
 * SINGLE POSTS STYLES
 */
-body.single-post table, body.single-post table td{
+body.single-post table, body.single-post table td, body.page table, body.page table td{
     border: none;
 }
 /*
