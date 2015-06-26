@@ -74,12 +74,12 @@ class TwitterAPIExchange
         
         return $this;
     }
-    
+
     /**
      * Set getfield string, example: '?screen_name=J7mbo'
-     * 
+     *
      * @param string $string Get key and value pairs as string
-     * 
+     *
      * @return \TwitterAPIExchange Instance of self for method chaining
      */
     public function setGetfield($string)
@@ -94,7 +94,7 @@ class TwitterAPIExchange
         $string = str_replace($search, $replace, $string);  
         
         $this->getfield = $string;
-        
+
         return $this;
     }
     
