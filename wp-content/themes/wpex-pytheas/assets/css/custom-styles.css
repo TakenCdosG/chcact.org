@@ -625,7 +625,32 @@ body.single-post table, body.single-post table td, body.page table, body.page ta
 /*
 * NEWSLETTER TEMPLATE
 */
-
+body.single-post div#content{
+    position: relative;
+    top: 17px;
+}
+body.single-post .news-sidebar{
+    position: relative;
+    top: 20px;
+}
+body.single-post .newsletter-sidebar{
+    position: relative;
+    top: 23px;
+    padding: 20px;
+    background-color: #FAFAFA;
+}
+body.single-post .newsletter-sidebar h4{
+    font-family: arial;
+    color: #ec7d26;
+    font-size: large;
+    font-weight: 100;
+}
+body.single-post div#content h4,  body.single-post div#content h2{
+    font-family: georgia-regular;
+    font-size: x-large;
+    color: #3e4e70;
+    font-weight: normal;
+}
 body.single-post table{
     background: #FAFAFA;
     width: 100%;
