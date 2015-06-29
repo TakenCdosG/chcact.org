@@ -667,6 +667,9 @@ body.single-post table td{
 body.single-post table h2{
     margin: 0px 0px 20px 0px;
 }
+body.single-post footer#footer{
+    display: none;
+}
 /*
 * FUNDING OPORTUNITIES TABLE
 */
