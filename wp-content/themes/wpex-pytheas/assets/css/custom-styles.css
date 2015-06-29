@@ -629,17 +629,17 @@ body.single-post div#content{
     position: relative;
     top: 17px;
 }
-body.single-post .news-sidebar{
+body.single-post #secondary{
     position: relative;
     top: 20px;
 }
-body.single-post .newsletter-sidebar{
+body.single-post .sidebar-inner{
     position: relative;
     top: 23px;
     padding: 20px;
     background-color: #FAFAFA;
 }
-body.single-post .newsletter-sidebar h4{
+body.single-post .sidebar-inner h4{
     font-family: arial;
     color: #ec7d26;
     font-size: large;
