@@ -107,3 +107,17 @@ $in['wordpress_adv_hidden'] = FALSE;
 
 return $in;
 }
+
+/*
+ * NEWSLETTER SIDEBAR VARIABLES
+ */
+
+/*global $week_issue, $tweek;
+
+$week_issue = get_field("week_issue");
+$tweek = get_field("tweek");*/
+
+
+
+
+

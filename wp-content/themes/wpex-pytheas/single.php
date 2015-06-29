@@ -51,6 +51,6 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php endwhile; ?>
-<?php //if (is_single() && in_category('News') ) {
-    get_sidebar(); //}?>
+<?php if (is_single() && in_category('News') ) {
+    get_sidebar('news'); }?>
 <?php get_footer(); ?>
