@@ -655,11 +655,13 @@ body.single-post table{
     background: #FAFAFA;
     width: 100%;
     margin-top: 30px;
+    table-layout: fixed;
 }
 body.single-post table:first-child{
     background: #FAFAFA;
     width: 100%;
     margin-top: 1px;
+    table-layout: fixed;
 }
 body.single-post table td{
     padding: 20px;
@@ -669,6 +671,9 @@ body.single-post table h2{
 }
 body.single-post footer#footer{
     display: none;
+}
+body.single-post table a, body.single-post table p, body.single-post table a, body.single-post table td h2, body.single-post table a, body.single-post table td b{
+    word-wrap: break-word;
 }
 /*
 * FUNDING OPORTUNITIES TABLE
@@ -687,4 +692,12 @@ body.page-id-9551 table tr{
 
 #twitter-widget-0{
     height: 199px;
+}
+/*
+* SIDEBAR MEDIA QUERIES
+*/
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    body.single-post div#secondary{
+        top: -90px;
+    }
 }
