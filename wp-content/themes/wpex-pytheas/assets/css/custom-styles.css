@@ -389,7 +389,7 @@ table.cyfan-city td ul{
 /*
 * HIDING LEFT MENU PAGES
 */
-body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 div#left-menu,body.single.single-post div#footer-menu, body.page-id-467 div#footer-menu,body.page-id-2708 div#footer-menu{
+body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 div#left-menu,body.page-id-24900 div#left-menu,body.single.single-post div#footer-menu, body.page-id-467 div#footer-menu,body.page-id-2708 div#footer-menu{
     display: none;
 }
 /*
