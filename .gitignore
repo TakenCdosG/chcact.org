@@ -1,5 +1,10 @@
 wp-content/uploads
+wp-content/uploads.zip
 resources
 .idea
 .htaccess
 wp-config.php
+backup
+con
+test
+wp-admin/error_log
