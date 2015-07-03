@@ -97,7 +97,9 @@ function jobman_shortcode( $atts, $content, $tag ) {
 		case 'job_odd_even':
 			return ( $jobman_shortcode_row_number % 2 )?( 'odd' ):( 'even' );
 		case 'job_link':
-			return '<a href="' . get_page_link( $jobman_shortcode_job->ID ) . '">' . do_shortcode( $content ) . '</a>';
+            $nurl = get_page_link($jobman_shortcode_job->ID);
+            $tes = str_replace(".org/",".org/jobs/",$nurl);
+			return '<a href="'. $tes .'">' . do_shortcode( $content ) . '</a>';
 		case 'job_title':
 			return $jobman_shortcode_job->post_title;
 		case 'job_icon':
