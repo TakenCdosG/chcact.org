@@ -99,7 +99,7 @@ function jobman_shortcode( $atts, $content, $tag ) {
 		case 'job_link':
             $nurl = get_page_link($jobman_shortcode_job->ID);
             $tes = str_replace(".org/",".org/jobs/",$nurl);
-			return '<a href="'. $tes .'">' . do_shortcode( $content ) . '</a>';
+            return '<a href="'. $tes .'">' . do_shortcode( $content ) . '</a>';
 		case 'job_title':
 			return $jobman_shortcode_job->post_title;
 		case 'job_icon':
