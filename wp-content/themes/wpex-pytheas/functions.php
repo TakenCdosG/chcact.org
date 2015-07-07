@@ -109,15 +109,17 @@ return $in;
 }
 
 /*
- * NEWSLETTER SIDEBAR VARIABLES
+ * NEWSLETTER ADD CLASS TO BODY
  */
 
-/*global $week_issue, $tweek;
-
-$week_issue = get_field("week_issue");
-$tweek = get_field("tweek");*/
-
-
+function add_slug_body_class( $classes ) {
+    global $post;
+    if ( isset( $post ) ) {
+        $classes[] = $post->post_type;
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
 
 
 
