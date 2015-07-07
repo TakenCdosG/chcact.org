@@ -9,7 +9,7 @@
 <div id="secondary" class="sidebar-container span_8 col news-sidebar" role="complementary">
     <div class="sidebar-inner newsletter-sidebar">
         <div class="widget-area">
-            
+
             <h2>In This Week's Issue</h2>
             <?php  echo get_field("week_issue"); ?>
 
@@ -18,7 +18,6 @@
 
             <h2>Tweet of the Week</h2>
             <?php echo get_field("tweek"); ?>
-
 
             <h2 id="SBIRT">New on Get-Centered</h2>
             <?php echo get_field("get_centered"); ?>
