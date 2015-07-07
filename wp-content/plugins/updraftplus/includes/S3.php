@@ -77,13 +77,13 @@ class UpdraftPlus_S3
 	* @param boolean $useSSL Enable SSL
 	* @return void
 	*/
-	public function __construct($accessKey = null, $secretKey = null, $useSSL = true, $sslCACert = true, $endpoint = 's3.amazonaws.com')
+	public function __construct($accessKey = null, $secretKey = null, $useSSL = true, $sslCACert = true, $endpoint = null)
 	{
 		if ($accessKey !== null && $secretKey !== null)
 			self::setAuth($accessKey, $secretKey);
 		self::$useSSL = $useSSL;
 		self::$sslCACert = $sslCACert;
-		self::$endpoint = $endpoint;
+		if (!empty($endpoint)) self::$endpoint = $endpoint;
 	}
 
 
@@ -269,7 +269,7 @@ class UpdraftPlus_S3
 		return $results;
 	}
 
-	public static function useDNSBucketName($use = true) {
+	public static function useDNSBucketName($use = true, $bucket = '') {
 		self::$use_dns_bucket_name = $use;
 		return true;
 	}
@@ -2089,16 +2089,19 @@ final class UpdraftPlus_S3Request
 				{
 					curl_setopt($curl, CURLOPT_PUT, true);
 					curl_setopt($curl, CURLOPT_INFILE, $this->fp);
-					if ($this->size >= 0)
+					if ($this->size >= 0) {
 						curl_setopt($curl, CURLOPT_INFILESIZE, $this->size);
+					}
 				}
 				elseif ($this->data !== false)
 				{
 					curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->verb);
 					curl_setopt($curl, CURLOPT_POSTFIELDS, $this->data);
+					curl_setopt($curl, CURLOPT_INFILESIZE, strlen($this->data));
 				}
-				else
+				else {
 					curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->verb);
+				}
 			break;
 			case 'HEAD':
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'HEAD');

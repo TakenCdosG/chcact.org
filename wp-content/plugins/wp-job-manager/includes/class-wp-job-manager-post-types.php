@@ -13,11 +13,12 @@ class WP_Job_Manager_Post_Types {
 		add_filter( 'the_content', array( $this, 'job_content' ) );
 		add_action( 'job_manager_check_for_expired_jobs', array( $this, 'check_for_expired_jobs' ) );
 		add_action( 'job_manager_delete_old_previews', array( $this, 'delete_old_previews' ) );
-		add_action( 'pending_to_publish', array( $this, 'set_expirey' ) );
-		add_action( 'preview_to_publish', array( $this, 'set_expirey' ) );
-		add_action( 'draft_to_publish', array( $this, 'set_expirey' ) );
-		add_action( 'auto-draft_to_publish', array( $this, 'set_expirey' ) );
-		add_action( 'expired_to_publish', array( $this, 'set_expirey' ) );
+
+		add_action( 'pending_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'preview_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'draft_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'auto-draft_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'expired_to_publish', array( $this, 'set_expiry' ) );
 
 		add_filter( 'the_job_description', 'wptexturize'        );
 		add_filter( 'the_job_description', 'convert_smilies'    );
@@ -284,45 +285,65 @@ class WP_Job_Manager_Post_Types {
 	 * Job listing feeds
 	 */
 	public function job_feed() {
-		$args = array(
+		$query_args = array(
 			'post_type'           => 'job_listing',
 			'post_status'         => 'publish',
 			'ignore_sticky_posts' => 1,
 			'posts_per_page'      => isset( $_GET['posts_per_page'] ) ? absint( $_GET['posts_per_page'] ) : 10,
-			's'                   => isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '',
-			'meta_query'          => array(),
-			'tax_query'           => array()
+			'tax_query'           => array(),
+			'meta_query'          => array()
 		);
 
-		if ( ! empty( $_GET['location'] ) ) {
-			$args['meta_query'][] = array(
-				'key'     => '_job_location',
-				'value'   => sanitize_text_field( $_GET['location'] ),
-				'compare' => 'LIKE'
-			);
+		if ( ! empty( $_GET['search_location'] ) ) {
+			$location_meta_keys = array( 'geolocation_formatted_address', '_job_location', 'geolocation_state_long' );
+			$location_search    = array( 'relation' => 'OR' );
+			foreach ( $location_meta_keys as $meta_key ) {
+				$location_search[] = array(
+					'key'     => $meta_key,
+					'value'   => sanitize_text_field( $_GET['search_location'] ),
+					'compare' => 'like'
+				);
+			}
+			$query_args['meta_query'][] = $location_search;
 		}
 
-		if ( ! empty( $_GET['type'] ) ) {
-			$args['tax_query'][] = array(
+		if ( ! empty( $_GET['job_types'] ) ) {
+			$query_args['tax_query'][] = array(
 				'taxonomy' => 'job_listing_type',
 				'field'    => 'slug',
-				'terms'    => explode( ',', sanitize_text_field( $_GET['type'] ) ) + array( 0 )
+				'terms'    => explode( ',', sanitize_text_field( $_GET['job_types'] ) ) + array( 0 )
 			);
 		}
 
 		if ( ! empty( $_GET['job_categories'] ) ) {
-			$args['tax_query'][] = array(
-				'taxonomy' => 'job_listing_category',
-				'field'    => 'slug',
-				'terms'    => explode( ',', sanitize_text_field( $_GET['job_categories'] ) ) + array( 0 )
+			$cats     = explode( ',', sanitize_text_field( $_GET['job_categories'] ) ) + array( 0 );
+			$field    = is_numeric( $cats ) ? 'term_id' : 'slug';
+			$operator = 'all' === get_option( 'job_manager_category_filter_type', 'all' ) && sizeof( $args['search_categories'] ) > 1 ? 'AND' : 'IN';
+			$query_args['tax_query'][] = array(
+				'taxonomy'         => 'job_listing_category',
+				'field'            => $field,
+				'terms'            => $cats,
+				'include_children' => $operator !== 'AND' ,
+				'operator'         => $operator
 			);
 		}
 
-		query_posts( apply_filters( 'job_feed_args', $args ) );
+		if ( $job_manager_keyword = sanitize_text_field( $_GET['search_keywords'] ) ) {
+			$query_args['_keyword'] = $job_manager_keyword; // Does nothing but needed for unique hash
+			add_filter( 'posts_clauses', 'get_job_listings_keyword_search' );
+		}
 
+		if ( empty( $query_args['meta_query'] ) ) {
+			unset( $query_args['meta_query'] );
+		}
+
+		if ( empty( $query_args['tax_query'] ) ) {
+			unset( $query_args['tax_query'] );
+		}
+
+		query_posts( apply_filters( 'job_feed_args', $query_args ) );
 		add_action( 'rss2_ns', array( $this, 'job_feed_namespace' ) );
 		add_action( 'rss2_item', array( $this, 'job_feed_item' ) );
-
 		do_feed_rss2( false );
 	}
 
@@ -418,15 +439,27 @@ class WP_Job_Manager_Post_Types {
 	}
 
 	/**
-	 * Set expirey date when job status changes
+	 * Typo -.-
 	 */
 	public function set_expirey( $post ) {
+		$this->set_expiry( $post );
+	}
+
+	/**
+	 * Set expirey date when job status changes
+	 */
+	public function set_expiry( $post ) {
 		if ( $post->post_type !== 'job_listing' ) {
 			return;
 		}
 
 		// See if it is already set
 		if ( metadata_exists( 'post', $post->ID, '_job_expires' ) ) {
+			$expires = get_post_meta( $post->ID, '_job_expires', true );
+			if ( $expires && strtotime( $expires ) < current_time( 'timestamp' ) ) {
+				update_post_meta( $post->ID, '_job_expires', '' );
+				$_POST[ '_job_expires' ] = '';
+			}
 			return;
 		}
 
@@ -437,25 +470,12 @@ class WP_Job_Manager_Post_Types {
 
 		// No manual setting? Lets generate a date
 		} else {
-			// Get duration from the product if set...
-			$duration = get_post_meta( $post->ID, '_job_duration', true );
+			$expires = calculate_job_expiry( $post->ID );
+			update_post_meta( $post->ID, '_job_expires', $expires );
 
-			// ...otherwise use the global option
-			if ( ! $duration ) {
-				$duration = absint( get_option( 'job_manager_submission_duration' ) );
-			}
-
-			if ( $duration ) {
-				$expires = date( 'Y-m-d', strtotime( "+{$duration} days", current_time( 'timestamp' ) ) );
-				update_post_meta( $post->ID, '_job_expires', $expires );
-
-				// In case we are saving a post, ensure post data is updated so the field is not overridden
-				if ( isset( $_POST[ '_job_expires' ] ) ) {
-					$_POST[ '_job_expires' ] = $expires;
-				}
-
-			} else {
-				update_post_meta( $post->ID, '_job_expires', '' );
+			// In case we are saving a post, ensure post data is updated so the field is not overridden
+			if ( isset( $_POST[ '_job_expires' ] ) ) {
+				$_POST[ '_job_expires' ] = $expires;
 			}
 		}
 	}
@@ -518,10 +538,12 @@ class WP_Job_Manager_Post_Types {
 		global $wpdb;
 
 		if ( '1' == $_meta_value ) {
-			$wpdb->update( $wpdb->posts, array( 'menu_order' => 0 ), array( 'ID' => $object_id ) );
+			$wpdb->update( $wpdb->posts, array( 'menu_order' => -1 ), array( 'ID' => $object_id ) );
 		} else {
-			$wpdb->update( $wpdb->posts, array( 'menu_order' => 1 ), array( 'ID' => $object_id, 'menu_order' => 0 ) );
+			$wpdb->update( $wpdb->posts, array( 'menu_order' => 0 ), array( 'ID' => $object_id, 'menu_order' => -1 ) );
 		}
+
+		clean_post_cache( $object_id );
 	}
 
 	/**

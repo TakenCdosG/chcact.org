@@ -2,8 +2,8 @@
 Contributors: humanmade, willmot, pauldewouters, joehoyle, mattheu, tcrsavage, cuvelier
 Tags: back up, backup, backups, database, zip, db, files, archive, wp-cli, humanmade
 Requires at least: 3.9
-Tested up to: 4.2-beta
-Stable tag: 3.2.2
+Tested up to: 4.2
+Stable tag: 3.2.6
 
 Simple automated backups of your WordPress powered website.
 
@@ -113,10 +113,14 @@ You can also tweet <a href="http://twitter.com/humanmadeltd">@humanmadeltd</a> o
 == Screenshots ==
 
 1. Manage multiple schedules.
-2. Choose your schedule, backup type, number of backups to keep and whether to recieve a notification email.
+2. Choose your schedule, backup type, number of backups to keep and whether to receive a notification email.
 3. Easily manage exclude rules and see exactly which files are included and excluded from your backup.
 
 == Upgrade Notice ==
+
+= 3.2.5 =
+
+* Security fixes related to add_query_arg
 
 = 3.2.1 =
 
@@ -140,11 +144,45 @@ You can also tweet <a href="http://twitter.com/humanmadeltd">@humanmadeltd</a> o
 
 == Changelog ==
 
-### 3.2.2 / 2015-03-25
+#### 3.2.6 / 2015-06-09
+
+* Fixes admin page slug for multisite
+
+#### 3.2.5 / 2015-04-29
+
+* Fixes an issue when evaluating expression with empty
+* Fixes a fatal error on PHP 5.3
+* Displays other notices
+* Updates stable tag
+* Adds some escaping and sanitizing
+* Defines plugins dir for different environments
+* Adds tests for activation and deactivation hooks
+* Adds a debugging function for tests
+* Symlinks plugin into tests dir
+* Splits out deactivation code into separate functions
+* Fixes activation and deactivation hooks not being fired
+* Exclude backups folder from size calculation
+* Fixes a misplaced parenthesis
+* Fixes how error messages are bubbled up
+* get home path should return defined value
+* Removes redundant exclude statement as CVS folders are excluded by default
+* Adds a flag parameter to allow get_files to return all files including default excludes
+
+#### 3.2.4 / 2015-04-01
+
+* Fixes default exclude pattern that was too greedy.
+
+#### 3.2.3 / 2015-04-01
+
+* Fixes issue where files where 'cache' files were excluded by default.
+* Updates brazilian portuguese translations.
+* Fixes the issue with the 'no thanks' button in the Support modal and misc JS improvements. props SiamKreative.
+
+#### 3.2.2 / 2015-03-25
 
 * Fixes error in manual backups, caused by incorrect plugin version number in class, which is used for the JS script version.
 
-### 3.2.1 / 2015-03-25
+#### 3.2.1 / 2015-03-25
 
 * Check if shell_exec is available before running command
 * Only validate day of month if this is the schedule type
@@ -152,7 +190,7 @@ You can also tweet <a href="http://twitter.com/humanmadeltd">@humanmadeltd</a> o
 * (issue-770) Exclude the folder, not the wildcard
 * (issue-751) Rename plugin
 
-### 3.2 / 2015-03-16
+#### 3.2 / 2015-03-16
 
 * (issue-698) skip mySql bug
 * Use shell_exec
@@ -225,7 +263,7 @@ You can also tweet <a href="http://twitter.com/humanmadeltd">@humanmadeltd</a> o
 * Fixes recursive exclusion of files
 
 
-### 3.1.4 / 2015-02-24
+#### 3.1.4 / 2015-02-24
 
 * (upgrade-options) Bump version
 * strtolower is redundant
@@ -238,11 +276,11 @@ You can also tweet <a href="http://twitter.com/humanmadeltd">@humanmadeltd</a> o
 * Leave bare minimum to avoid fatal error
 * remove old main plugin class
 
-### 3.1.3 / 2015-02-04
+#### 3.1.3 / 2015-02-04
 
 * Keep deprecated classes in a deprecated.php file to avoid Fatal Error in addons during upgrade.
 
-### 3.1.2 / 2015-02-03
+#### 3.1.2 / 2015-02-03
 
 * (simplify-bwp-file-timestamp) Simplify the file name timestamp
 * Fix class file name

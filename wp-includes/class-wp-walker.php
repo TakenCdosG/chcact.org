@@ -25,19 +25,17 @@ class Walker {
 	 * DB fields to use.
 	 *
 	 * @since 2.1.0
-	 * @access protected
 	 * @var array
 	 */
-	protected $db_fields;
+	public $db_fields;
 
 	/**
 	 * Max number of pages walked by the paged walker
 	 *
 	 * @since 2.7.0
-	 * @access protected
 	 * @var int
 	 */
-	protected $max_pages = 1;
+	public $max_pages = 1;
 
 	/**
 	 * Whether the current element has children or not.
@@ -45,62 +43,9 @@ class Walker {
 	 * To be used in start_el().
 	 *
 	 * @since 4.0.0
-	 * @access protected
 	 * @var bool
 	 */
-	protected $has_children;
-
-	/**
-	 * Make private properties readable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to get.
-	 * @return mixed Property.
-	 */
-	public function __get( $name ) {
-		return $this->$name;
-	}
-
-	/**
-	 * Make private properties settable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name  Property to set.
-	 * @param mixed  $value Property value.
-	 * @return mixed Newly-set property.
-	 */
-	public function __set( $name, $value ) {
-		return $this->$name = $value;
-	}
-
-	/**
-	 * Make private properties checkable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to check if set.
-	 * @return bool Whether the property is set.
-	 */
-	public function __isset( $name ) {
-		return isset( $this->$name );
-	}
-
-	/**
-	 * Make private properties un-settable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to unset.
-	 */
-	public function __unset( $name ) {
-		unset( $this->$name );
-	}
+	public $has_children;
 
 	/**
 	 * Starts the list before the elements are added.
@@ -202,7 +147,6 @@ class Walker {
 		call_user_func_array(array($this, 'start_el'), $cb_args);
 
 		// descend only when the depth is right and there are childrens for this element
-
 		if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
 
 			foreach( $children_elements[ $id ] as $child ){
@@ -245,6 +189,7 @@ class Walker {
 	 * @return string The hierarchical item output.
 	 */
 	public function walk( $elements, $max_depth) {
+
 		$args = array_slice(func_get_args(), 2);
 		$output = '';
 

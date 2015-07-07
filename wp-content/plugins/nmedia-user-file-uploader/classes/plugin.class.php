@@ -733,6 +733,19 @@ class NM_WP_FileManager extends NM_Framwork_V1_filemanager {
 	
 		// Uncomment this one to fake upload time
 		// usleep(5000);
+		
+		/* ========== Invalid File type checking ========== */
+		$file_type = wp_check_filetype($_REQUEST ["name"], null );
+		
+		$allowed_types = explode(',', $this->get_option('_file_types'));
+		//var_dump($allowed_types);
+		
+		if( !in_array($file_type['ext'], $allowed_types) ){
+			$response ['status'] = 'error';
+			$response ['message'] = __ ( 'File type not valid', 'nm-filemanager' );
+			die ( json_encode($response) );
+		}
+		/* ========== Invalid File type checking ========== */
 	
 		// Get parameters
 		$chunk = isset ( $_REQUEST ["chunk"] ) ? intval ( $_REQUEST ["chunk"] ) : 0;

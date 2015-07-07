@@ -173,16 +173,19 @@ if( get_browser_runtimes() == 'flash' )
 				
 				/* console.log(up);
 				console.log(file);*/
-				
+
+				var obj_resp = $.parseJSON(info.response);
+				if(obj_resp.status === 'error'){
+					
+					alert(obj_resp.message);
+					window.location.reload(true);
+				}
 				
 				$filelist_DIV.find('#u_i_c_' + file.id).find('.file-thumb-title-description').show();
 				$('#fileupload-button-bar').show();
 				
-				var obj_resp = $.parseJSON(info.response);
-				console.log(obj_resp);
-				var file_thumb 	= ''; 
-
-			
+				var file_thumb 	= '';
+							
 				// checking if uploaded file is thumb
 				ext = obj_resp.file_name.substring(obj_resp.file_name.lastIndexOf('.') + 1);					
 				ext = ext.toLowerCase();

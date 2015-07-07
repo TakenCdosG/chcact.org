@@ -142,6 +142,7 @@ class wfCache {
 
 		$file = self::fileFromRequest( ($_SERVER['HTTP_HOST'] ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']), $_SERVER['REQUEST_URI']);
 		self::makeDirIfNeeded($file);
+		// self::writeCacheDirectoryHtaccess();
 		$append = "";
 		$appendGzip = "";
 		if(wfConfig::get('addCacheComment', false)){
@@ -219,8 +220,38 @@ class wfCache {
 			}
 			return $msg;
 		}
-		return false; //Everything is OK
+		self::removeCacheDirectoryHtaccess();
+		return false;
+		// return self::writeCacheDirectoryHtaccess(); //Everything is OK
 	}
+
+	/**
+	 * Returns false on success to match wfCache::cacheDirectoryTest
+	 *
+	 * @see wfCache::cacheDirectoryTest
+	 *
+	 * @return bool|string
+	 */
+	public static function writeCacheDirectoryHtaccess() {
+		$cacheDir = WP_CONTENT_DIR . '/wfcache/';
+		if (!file_exists($cacheDir . '.htaccess') && !@file_put_contents($cacheDir . '.htaccess', 'Deny from all', LOCK_EX)) {
+			$err = error_get_last();
+			$msg = "We could not write to the file $cacheDir" . ".htaccess.";
+			if($err){
+				$msg .= " The error was: " . $err['message'];
+			}
+			return $msg;
+		}
+		return false;
+	}
+
+	public static function removeCacheDirectoryHtaccess() {
+		$cacheDir = WP_CONTENT_DIR . '/wfcache/';
+		if (file_exists($cacheDir . '.htaccess')) {
+			unlink($cacheDir . '.htaccess');
+		}
+	}
+
 	public static function action_publishPost($id){
 		$perm = get_permalink($id);
 		self::deleteFileFromPermalink($perm);
@@ -547,6 +578,11 @@ EOT;
 		self::updateBlockedIPs('add'); //Fail silently if .htaccess is not readable. Will fall back to old blocking via WP
 		wp_schedule_single_event(time() + 300, 'wordfence_update_blocked_IPs');
 	}
+
+	/**
+	 * @param $action
+	 * @return bool|string|void
+	 */
 	public static function updateBlockedIPs($action){ //'add' or 'remove'
 		if(wfConfig::get('cacheType') != 'falcon'){ return; }
 
@@ -604,9 +640,19 @@ EOT;
 
 					if($range){
 						if($browser || $referer){ continue; } //We don't allow combos in falcon
-						$ips = explode('-', $range);
-						$cidrs = wfUtils::rangeToCIDRs($ips[0], $ips[1]);
-						$hIPs = wfUtils::inet_ntoa($ips[0]) . ' - ' . wfUtils::inet_ntoa($ips[1]);
+
+						list($start_range, $end_range) = explode('-', $range);
+						if (preg_match('/[\.:]/', $start_range)) {
+							$start_range = wfUtils::inet_pton($start_range);
+							$end_range = wfUtils::inet_pton($end_range);
+						} else {
+							$start_range = wfUtils::inet_pton(long2ip($start_range));
+							$end_range = wfUtils::inet_pton(long2ip($end_range));
+						}
+
+						$cidrs = wfUtils::rangeToCIDRs($start_range, $end_range);
+
+						$hIPs = wfUtils::inet_ntop($start_range) . ' - ' . wfUtils::inet_ntop($end_range);
 						if(sizeof($cidrs) > 0){
 							$lines[] = '#Start of blocking code for IP range: ' . $hIPs . "\n";
 							foreach($cidrs as $c){

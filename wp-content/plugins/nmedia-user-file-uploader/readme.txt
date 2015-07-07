@@ -4,7 +4,7 @@ Donate link: http://www.najeebmedia.com/donate/
 Tags: Front end upload, File uploader, User files, User files manager, File uploaders, User Desgins uploader, Image uploader, ajax based file uploader, progress bar
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 3.7
+Stable tag: 3.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,8 @@ This plugin lets the wordpress site users to upload files for admin. Each file i
 <h3>Pro Features</h3>
 Pro version gives you AWSOME control over this plugin on top of free version. You can control file upload behavior with following shortcode
 <ul>
+	<li>Create Directory</li>
+	<li>Directory Tree View (see screenshots)</li>
 	<li>Min files limit</li>
 	<li>Max file upload limit set</li>
 	<li>Secure download link</li>
@@ -90,6 +92,8 @@ it is because of your server side settings, sometime php.ini does not allow to u
 
 1. Frontend view of plgin
 2. Admin area for user uploaded files
+3. PRO Feature: Create directory
+4. PRO Feature: Directory Tree View Template
 
 == Changelog ==
 
@@ -202,3 +206,6 @@ this version has major updates. It's not using userfiles table. But we included 
 
 = 3.6 =
 * Plupload replace with new version 2.1.2, MUST update to this version as older version of plupload have some security issues.
+
+= 3.8 =
+* SECURITY ALERT: This version has removed a BUG related to security. Remote invalid file types are NOT allowed
