@@ -168,7 +168,7 @@ function is_position_featured( $post = null ) {
  */
 function candidates_can_apply( $post = null ) {
 	$post = get_post( $post );
-	return ! is_position_filled() && ! in_array( $post->post_status, array( 'preview', 'expired' ) );
+	return apply_filters( 'job_manager_candidates_can_apply', ( ! is_position_filled() && ! in_array( $post->post_status, array( 'preview', 'expired' ) ) ), $post );
 }
 
 /**
@@ -204,8 +204,10 @@ function get_the_job_permalink( $post = null ) {
  */
 function get_the_job_application_method( $post = null ) {
 	$post = get_post( $post );
-	if ( $post->post_type !== 'job_listing' )
+
+	if ( $post && $post->post_type !== 'job_listing' ) {
 		return;
+	}
 
 	$method = new stdClass();
 	$apply  = $post->_application;
@@ -310,15 +312,16 @@ function the_company_logo( $size = 'full', $default = null, $post = null ) {
 
 	if ( ! empty( $logo ) && ( strstr( $logo, 'http' ) || file_exists( $logo ) ) ) {
 
-		if ( $size !== 'full' )
+		if ( $size !== 'full' ) {
 			$logo = job_manager_get_resized_image( $logo, $size );
+		}
 
-		echo '<img class="company_logo" src="' . $logo . '" alt="' . get_the_company_name( $post ) . '" />';
+		echo '<img class="company_logo" src="' . esc_attr( $logo ) . '" alt="' . esc_attr( get_the_company_name( $post ) ) . '" />';
 
 	} elseif ( $default ) {
-		echo '<img class="company_logo" src="' . $default . '" alt="' . get_the_company_name( $post ) . '" />';
+		echo '<img class="company_logo" src="' . esc_attr( $default ) . '" alt="' . esc_attr( get_the_company_name( $post ) ) . '" />';
 	} else {
-		echo '<img class="company_logo" src="' . apply_filters( 'job_manager_default_company_logo', JOB_MANAGER_PLUGIN_URL . '/assets/images/company.png' ) . '" alt="' . get_the_company_name( $post ) . '" />';
+		echo '<img class="company_logo" src="' . esc_attr( apply_filters( 'job_manager_default_company_logo', JOB_MANAGER_PLUGIN_URL . '/assets/images/company.png' ) ) . '" alt="' . esc_attr( get_the_company_name( $post ) ) . '" />';
 	}
 }
 
@@ -347,8 +350,6 @@ function get_the_company_logo( $post = null ) {
 function job_manager_get_resized_image( $logo, $size ) {
 	global $_wp_additional_image_sizes;
 
-	ob_start();
-
 	if ( $size !== 'full' && strstr( $logo, WP_CONTENT_URL ) && ( isset( $_wp_additional_image_sizes[ $size ] ) || in_array( $size, array( 'thumbnail', 'medium', 'large' ) ) ) ) {
 
 		if ( in_array( $size, array( 'thumbnail', 'medium', 'large' ) ) ) {
@@ -362,27 +363,38 @@ function job_manager_get_resized_image( $logo, $size ) {
 		}
 
 		$upload_dir        = wp_upload_dir();
-		$logo_path         = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $logo );
+		$logo_path         = str_replace( array( $upload_dir['baseurl'], $upload_dir['url'], WP_CONTENT_URL ), array( $upload_dir['basedir'], $upload_dir['path'], WP_CONTENT_DIR ), $logo );
 		$path_parts        = pathinfo( $logo_path );
 		$resized_logo_path = str_replace( '.' . $path_parts['extension'], '-' . $size . '.' . $path_parts['extension'], $logo_path );
 
+		if ( strstr( $resized_logo_path, 'http:' ) || strstr( $resized_logo_path, 'https:' ) ) {
+			return $logo;
+		}
+
 		if ( ! file_exists( $resized_logo_path ) ) {
-			// Generate size
+			ob_start();
+
 			$image = wp_get_image_editor( $logo_path );
 
 			if ( ! is_wp_error( $image ) ) {
-			   	if ( ! is_wp_error( $image->resize( $img_width, $img_height, $img_crop ) ) ) {
-					if ( ! is_wp_error( $image->save( $resized_logo_path ) ) ) {
+
+				$resize = $image->resize( $img_width, $img_height, $img_crop );
+
+			   	if ( ! is_wp_error( $resize ) ) {
+
+			   		$save = $image->save( $resized_logo_path );
+
+					if ( ! is_wp_error( $save ) ) {
 						$logo = dirname( $logo ) . '/' . basename( $resized_logo_path );
 					}
 				}
 			}
+
+			ob_get_clean();
 		} else {
 			$logo = dirname( $logo ) . '/' . basename( $resized_logo_path );
 		}
 	}
-
-	ob_end_clean();
 
 	return $logo;
 }
@@ -391,8 +403,14 @@ function job_manager_get_resized_image( $logo, $size ) {
  * Output the company video
  */
 function the_company_video( $post = null ) {
-	$video       = get_the_company_video( $post );
-	$video_embed = wp_oembed_get( $video );
+	$video    = get_the_company_video( $post );
+	$filetype = wp_check_filetype( $video );
+
+	if ( ! empty( $filetype['ext'] ) ) {
+		$video_embed = wp_video_shortcode( array( 'src' => $video ) );
+	} else {
+		$video_embed = wp_oembed_get( $video );
+	}
 
 	if ( $video_embed ) {
 		echo '<div class="company_video">' . $video_embed . '</div>';

@@ -11,10 +11,12 @@ class WP_Job_Manager_Cache_Helper {
 
 	public static function init() {
 		add_action( 'save_post', array( __CLASS__, 'flush_get_job_listings_cache' ) );
+		add_action( 'job_manager_my_job_do_action', array( __CLASS__, 'job_manager_my_job_do_action' ) );
 		add_action( 'set_object_terms', array( __CLASS__, 'set_term' ), 10, 4 );
 		add_action( 'edited_term', array( __CLASS__, 'edited_term' ), 10, 3 );
 		add_action( 'create_term', array( __CLASS__, 'edited_term' ), 10, 3 );
 		add_action( 'delete_term', array( __CLASS__, 'edited_term' ), 10, 3 );
+		add_action( 'job_manager_clear_expired_transients', array( __CLASS__, 'clear_expired_transients' ), 10 );
 	}
 
 	/**
@@ -22,6 +24,15 @@ class WP_Job_Manager_Cache_Helper {
 	 */
 	public static function flush_get_job_listings_cache( $post_id ) {
 		if ( 'job_listing' === get_post_type( $post_id ) ) {
+			self::get_transient_version( 'get_job_listings', true );
+		}
+	}
+
+	/**
+	 * Flush the cache
+	 */
+	public static function job_manager_my_job_do_action( $action ) {
+		if ( 'mark_filled' === $action || 'mark_not_filled' === $action ) {
 			self::get_transient_version( 'get_job_listings', true );
 		}
 	}
@@ -62,10 +73,38 @@ class WP_Job_Manager_Cache_Helper {
 		$transient_value = get_transient( $transient_name );
 
 		if ( false === $transient_value || true === $refresh ) {
-			$transient_value = time();
-			set_transient( $transient_name, $transient_value );
+			self::delete_version_transients( $transient_value );
+			set_transient( $transient_name, $transient_value = time() );
 		}
 		return $transient_value;
+	}
+
+	/**
+	 * When the transient version increases, this is used to remove all past transients to avoid filling the DB.
+	 *
+	 * Note; this only works on transients appended with the transient version, and when object caching is not being used.
+	 */
+	private static function delete_version_transients( $version ) {
+		if ( ! wp_using_ext_object_cache() && ! empty( $version ) ) {
+			global $wpdb;
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s;", "\_transient\_%" . $version ) );
+		}
+	}
+
+    /**
+	 * Clear expired transients
+	 */
+	public static function clear_expired_transients() {
+		global $wpdb;
+
+		if ( ! wp_using_ext_object_cache() && ! defined( 'WP_SETUP_CONFIG' ) && ! defined( 'WP_INSTALLING' ) ) {
+			$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
+				WHERE a.option_name LIKE %s
+				AND a.option_name NOT LIKE %s
+				AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
+				AND b.option_value < %d";
+			$rows = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_jm_' ) . '%', $wpdb->esc_like( '_transient_timeout_jm_' ) . '%', time() ) );
+		}
 	}
 }
 

@@ -7,4 +7,39 @@ wp-config.php
 backup
 con
 test
+
+error_log
 wp-admin/error_log
+wp-content/themes/wpex-pytheas/error_log
+
+
+# @TODO writable paths
+wp-content/cache/
+wp-content/backups/
+
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases #
+######################
+*.log
+*.sql
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+._*
