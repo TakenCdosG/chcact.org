@@ -41,7 +41,7 @@ get_header(); ?>
 			if ( of_get_option('blog_bio', '1' ) && get_the_author_meta( 'description' ) ) { ?>
 				<?php get_template_part( 'author-bio' ); ?>
 			<?php } ?>
-			
+
 			<?php comments_template(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->

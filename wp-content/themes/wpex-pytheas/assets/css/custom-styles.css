@@ -701,3 +701,9 @@ body.page-id-9551 table tr{
         top: -90px;
     }
 }
+/*
+* TCG URL IN FOOTER
+*/
+div#copyright a.tcg-url{
+    color: #0066CC;
+}
