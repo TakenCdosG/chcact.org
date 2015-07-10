@@ -110,7 +110,6 @@ function jobman_shortcode( $atts, $content, $tag ) {
                     $tes = str_replace(".org/jobs/jobs/",".org/jobs/",$nurl);
                 }
             }
-            var_dump($tes);
             return '<a href="'. $tes .'">' . do_shortcode( $content ) . '</a>';
 		case 'job_title':
 			return $jobman_shortcode_job->post_title;
