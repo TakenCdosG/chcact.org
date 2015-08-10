@@ -389,7 +389,7 @@ table.cyfan-city td ul{
 /*
 * HIDING LEFT MENU PAGES
 */
-body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 div#left-menu,body.page-id-24900 div#left-menu,body.single.single-post div#footer-menu, body.page-id-467 div#footer-menu,body.page-id-2708 div#footer-menu, body.jobman_job div#left-menu, body.jobman_app_form div#left-menu{
+body.page-id-206 div#left-menu,body.page-id-165 div#left-menu,body.page-id-118 div#left-menu,body.page-id-24900 div#left-menu,body.single.single-post div#footer-menu, body.page-id-467 div#footer-menu,body.page-id-2708 div#footer-menu, body.jobman_job div#left-menu, body.jobman_app_form div#left-menu, body.parent-pageid-165 div#left-menu{
     display: none;
 }
 /*
@@ -706,4 +706,13 @@ body.page-id-9551 table tr{
 */
 div#copyright a.tcg-url{
     color: #0066CC;
+}
+/*
+* WEBINARS PAGE STYLES
+*/
+.webinar-title{
+    color:#253a64;
+    font-family: georgia;
+    font-size: 30px;
+    font-weight: normal;
 }
