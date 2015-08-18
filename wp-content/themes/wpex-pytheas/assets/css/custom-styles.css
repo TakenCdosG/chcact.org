@@ -711,8 +711,42 @@ div#copyright a.tcg-url{
 * WEBINARS PAGE STYLES
 */
 .webinar-title{
-    color:#253a64;
+    color:#425479;
     font-family: georgia;
     font-size: 30px;
     font-weight: normal;
+}
+.webinar-container li{
+    list-style: none;
+}
+.webinar-container{
+    background: #FAFAFA;
+    margin-bottom: 20px;
+    padding: 20px 20px 5px 20px;
+}
+.webinar-container .single-web-title a{
+    font-family: georgia;
+    font-size: 25px;
+    color:#425479;
+    text-decoration: none !important;
+}
+.webinar-container .webinar-info .single-web-title a:visited{
+    color:#425479 !important;
+    text-decoration: none !important;
+}
+.right-arrow{
+    font-size: 16px;
+    color: #000000;
+}
+.webinar-excerpt a{
+    text-decoration: none !important;
+}
+.webinars-archive{
+    border-radius: 8px;
+    background: #EBEBEB;
+}
+p.previous-webs{
+    font-family: georgia;
+    color: #425479;
+    padding: 8px 0 0 20px;
 }
