@@ -730,7 +730,7 @@ div#copyright a.tcg-url{
     color:#425479;
     text-decoration: none !important;
 }
-.webinar-container .webinar-info .single-web-title a:visited{
+body.page-id-24978 div.webinar-container div.webinar-info div.single-web-title a:visited{
     color:#425479 !important;
     text-decoration: none !important;
 }
@@ -744,9 +744,19 @@ div#copyright a.tcg-url{
 .webinars-archive{
     border-radius: 8px;
     background: #EBEBEB;
+    float: right;
 }
 p.previous-webs{
     font-family: georgia;
     color: #425479;
     padding: 8px 0 0 20px;
+}
+p.prev_web_text{
+    padding-left: 20px;
+}
+div.navi-links{
+    margin: 10px 0 -20px 0;
+}
+body.paged.page-id-24996 div.navi-links span.next-link{
+    float: right;
 }

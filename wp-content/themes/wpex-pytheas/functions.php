@@ -126,5 +126,26 @@ add_filter( 'body_class', 'add_slug_body_class' );
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
 
+/*
+ * GETTING ARCHIVES FOR ONLY ONE CATEGORY
+ */
+
+add_filter( 'getarchives_where', 'customarchives_where' );
+add_filter( 'getarchives_join', 'customarchives_join' );
+
+function customarchives_join( $x ) {
+    global $wpdb;
+    return $x . " INNER JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) INNER JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)";
+}
+function customarchives_where( $x ) {
+    global $wpdb;
+    //$exclude = '1'; // category id to exclude
+    //return $x . " AND $wpdb->term_taxonomy.taxonomy = 'category' AND $wpdb->term_taxonomy.term_id NOT IN ($exclude)";
+    // AND $wpdb->posts.post_type = 'page'
+    $include = '60'; // category id to include
+    return $x . "AND $wpdb->term_taxonomy.taxonomy = 'category' AND $wpdb->term_taxonomy.term_id IN ($include)";
+}
+
+
 
 
