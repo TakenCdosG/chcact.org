@@ -28,7 +28,8 @@ get_header(); ?>
             $archive_args = array(
                 'post_type' => 'page',    // get only posts
                 'posts_per_page'=> 10 ,
-                'cat'=> 60
+                'cat'=> 60,
+                'meta_query' => array(array('key' => '_thumbnail_id'))
             );
 
             $archive_args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
@@ -54,7 +55,6 @@ get_header(); ?>
 
                     <article <?php post_class(); // output a post article ?>>
                         <h4><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                        <span><?php the_time("jS M, Y"); ?></span>
                     </article>
 
                     <?php $date_old = $date_new; // update $date_old ?>
