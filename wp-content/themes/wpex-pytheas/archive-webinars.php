@@ -54,7 +54,7 @@ get_header(); ?>
                     <?php endif; ?>
 
                     <article <?php post_class(); // output a post article ?>>
-                        <h4><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                        <p class="webinar-archive-title"><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></p>
                     </article>
 
                     <?php $date_old = $date_new; // update $date_old ?>
