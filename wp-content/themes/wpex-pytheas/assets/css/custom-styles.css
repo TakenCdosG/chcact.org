@@ -7,6 +7,9 @@ body{
 div#content a:visited{
     color: #f15a23 !important;
 }
+div#content a, article p a{
+    color: #f15a23 !important;
+}
 #wrap{
     margin: 0 auto;
     background: transparent;
