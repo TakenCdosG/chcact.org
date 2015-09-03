@@ -29,7 +29,7 @@ get_header(); ?>
                 'post_type' => 'page',    // get only posts
                 'posts_per_page'=> 10 ,
                 'cat'=> 60,
-                'meta_query' => array(array('key' => '_thumbnail_id'))
+                //'meta_query' => array(array('key' => '_thumbnail_id'))
             );
 
             $archive_args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
