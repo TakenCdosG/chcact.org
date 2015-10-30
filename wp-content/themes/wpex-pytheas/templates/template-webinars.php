@@ -39,7 +39,7 @@ get_header(); ?>
 
             foreach($pages as $value){
                 $webinars_count++;
-                if($webinars_count < 6) {
+                if($webinars_count < 11) {
                     $thumb = get_the_post_thumbnail($value->ID, array(200, 200), $attr = '');
                     $output .= "<div class='webinar-container content-area row'>";
                         $output .= "<div class='featured-web-img span_7 col'><a href='" . $value->post_name . "' >" . $thumb . "</a></div>";
