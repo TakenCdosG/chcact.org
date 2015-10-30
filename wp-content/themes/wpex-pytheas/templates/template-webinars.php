@@ -28,8 +28,8 @@ get_header(); ?>
                 'child_of'     => $the_id,
                 'title_li'     => '',
                 'depth'			=> 0,
-                'sort_order'	=> 'DESC',
-                'sort_column'	=> 'post_date'
+                'sort_order'	=> 'ASC',
+                'sort_column'	=> 'post_name'
             );
 
             $pages = get_pages( $args );
